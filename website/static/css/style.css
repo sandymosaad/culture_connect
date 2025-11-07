@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* Light Button */
+.btn-light {
+    background: white;
+    color: #333;
+}
+.btn-light:hover {
+    background: #eaeaea;
+}
+
+/* Primary Button */
+.btn-primary {
+    background: #4c8bf5;
+    color: white;
+}
+.btn-primary:hover {
+    background: #2f6dd9;
+}

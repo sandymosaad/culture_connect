@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        {% if custom_style %}
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/' ~ custom_style ~ '.css') }}">
+        {% endif %}
+
+        <title>{% block title %} Home {% endblock %}</title>
+    </head>
+    <body>
+        <div class= "container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+        </body>
+</html>
