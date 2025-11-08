@@ -3,7 +3,39 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+/* --------------------------------------------------------- Background image ---------------------------------------------- */
+.img-background {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/static/images/world-map.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+/* effect (overlay) */
+.img-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+.img-background-content{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    
+    padding: 0 20px;
+}
+
+/* --------------------------------------------------------- buttons ---------------------------------------------- */
 
 .btn {
     padding: 12px 28px;
@@ -12,6 +44,7 @@ body {
     font-size: 1.1rem;
     font-weight: 500;
     transition: 0.3s;
+    border: none;
 }
 
 /* Light Button */
@@ -31,3 +64,66 @@ body {
 .btn-primary:hover {
     background: #2f6dd9;
 }
+
+/* --------------------------------------------------------- forms ---------------------------------------------- */
+/*form*/
+form{
+    background-color: white;
+    padding: 40px 35px;
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    animation: fadeIn 0.7s ease-out;
+
+}
+
+form:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+form h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+/*form group */
+.form-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* form link*/
+.form-link {
+    margin-top: 15px;
+    color: #444;
+}
+.form-link a {
+    color: #4c8bf5;
+    text-decoration: none;
+}
+
+.form-link a:hover {
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------------------- ---------------------------------------------*/
