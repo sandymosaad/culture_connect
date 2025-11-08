@@ -1,6 +1,8 @@
-from flask import Blueprint, render_template, redirect, url_for, request 
+from flask import Blueprint, render_template, redirect, url_for, request , flash
 from os import path
 import json
+
+
 auth = Blueprint('auth', __name__)
 
 
@@ -61,8 +63,29 @@ def get_users():
 #######################
 # login 
 #######################
+
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+    
+        users = get_users()
+        user_found = None
+        for user in users:
+            if user['username'] == username:
+                user_found = user
+                break
+
+        if user_found:
+            if password == user_found['password']:
+                flash('Logged in successfully!', category='success')
+                return redirect(url_for('views.profile'))
+            else:
+                flash('Incorrect password, try again.', category='error')
+        else:
+            flash(f'User not found {users}', category='error')
+
     return render_template('login.html', custom_style='auth')
 
 #######################
