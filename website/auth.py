@@ -1,33 +1,67 @@
 from flask import Blueprint, render_template, redirect, url_for, request 
 from os import path
-
+import json
 auth = Blueprint('auth', __name__)
 
 
-
+#######################
+# get path
+#######################
 def get_db_path(filename):
     """
-    Returns the absolute path to a database text file inside the 'db' folder.
+    Returns the absolute path to a JSON database file inside the 'db' folder.
     """
-    base_dir = path.dirname(path.abspath(__file__))  # current folder (website)
-    project_root = path.dirname(base_dir)           # project root (culture_connect)
-    db_path = path.join(project_root, "db", f"{filename}.txt")
+    base_dir = path.dirname(path.abspath(__file__))      # website/
+    project_root = path.dirname(base_dir)                # project root
+    db_path = path.join(project_root, "db", f"{filename}.json")
     return db_path
 
-
+#######################
+# add user 
+#######################
 def add_user(user):
     """
-    Adds a new user record to the 'users.txt' database file.
-    Each user is stored in the format: username-email-password
+    Adds a new user object to users.json.
+    user must be a dictionary: {"id": 1, "username": "...", "email": "...", "password": "..."}
     """
     file_path = get_db_path('users')
-    with open(file_path, 'a') as users_db:
-        users_db.write(f'{user}\n')
 
+    # If file doesn't exist yet, start with empty list
+    if not path.exists(file_path):
+        with open(file_path, 'w') as f:
+            json.dump([], f)
+
+    if path.getsize(file_path) == 0:
+        users = []
+    else:
+        with open(file_path, 'r') as f:
+            users = json.load(f)
+
+    # Add new user
+    users.append(user)
+
+    # Write updated list back
+    with open(file_path, 'w') as f:
+        json.dump(users, f, indent=4)
+        
+#######################
+# get users 
+#######################
+def get_users():
+    file_path = get_db_path('users')
+    if not path.exists(file_path):
+        return []
+    if path.getsize(file_path) == 0:
+        return []
+    with open(file_path, 'r') as f:
+        users = json.load(f)
+        return users
+
+    
 #######################
 # login 
 #######################
-@auth.route('/login')
+@auth.route('/login', methods=['POST', 'GET'])
 def login():
     return render_template('login.html', custom_style='auth')
 
@@ -47,8 +81,17 @@ def sign_up():
         username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
-        user_record = f'{username}-{email}-{password}'
-        add_user(user_record)
+        if len(get_users()) == 0:
+            id=1
+        else:
+            id=len(get_users()) + 1
+        new_user = {
+            "id": id,
+            "username": username,
+            "email": email,
+            "password": password
+        }
+        add_user(new_user)
         return redirect(url_for('auth.login'))
 
     return render_template('signup.html', custom_style='auth')
