@@ -2,6 +2,35 @@ body {
     margin: 0;
     font-family: "Poppins", sans-serif;
 }
+.navbar{
+    width: 100%;
+    height: 3%;
+    background-color: #fcfafa;
+}
+
+.navbar-brand img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.navbar .container-fluid{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+ .navbar-nav{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.navbar-nav .nav-item{
+    padding: 0 10px ;
+    list-style: none;
+    text-decoration: underline;
+}
+.navbar-nav li a{
+    text-decoration: underline;
+}
 
 /* --------------------------------------------------------- Background image ---------------------------------------------- */
 .img-background {
