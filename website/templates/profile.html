@@ -20,7 +20,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url_for('views.add_post') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url_for('views.profile') }}" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Title of post</label>
                         <input type="text" name="title" id="title" class="form-control" placeholder="Enter post title" required>
@@ -64,20 +64,19 @@
     <div class="cards">
         <div class="card flex justfiy-content" style="width: 18rem;" >
             <div class="top-card">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{title}}</h5>
                 <img src="/static/images/flag.jpeg" class="flag-img" alt="flag-img">
             </div>
             <div class="card-body">
                 <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card’s content.
-                    Some quick example text to build on the card title and make up the bulk of the card’s content.
+                    {{body}}
                 </p>
                 <img src="/static/images/flag.jpeg" alt="" >
             </div>
             <div class="info">
-                <p>sandy</p>
-                <p>Tourist Attraction</p>
-                <p>5/11/2025</p>
+                <p>{{username}}</p>
+                <p>{{category}}</p>
+                <p>{{date}}</p>
             </div>
         </div>
         <div class="card flex justfiy-content" style="width: 18rem;" >
