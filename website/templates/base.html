@@ -12,10 +12,26 @@
         <title>{% block title %} Home {% endblock %}</title>
     </head>
     <body>
-        <div class= "container">
-            {% block content %}
-            {% endblock %}
-        </div>
+    <!-- Flash messages -->
+    <div class="section-alert">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="my-alert {{ 'error-alert' if category == 'error' else 'success-alert' }}">
+                        <span>{{ message }}</span>
+                        <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+
         <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
         </body>
 </html>
