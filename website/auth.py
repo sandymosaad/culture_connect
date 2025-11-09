@@ -1,8 +1,6 @@
-from flask import Blueprint, render_template, redirect, url_for, request , flash
+from flask import Blueprint, render_template, redirect, url_for, request , flash, session
 from os import path
 import json
-
-
 auth = Blueprint('auth', __name__)
 
 
@@ -80,7 +78,8 @@ def login():
         if user_found:
             if password == user_found['password']:
                 flash('Logged in successfully!', category='success')
-                return redirect(url_for('views.profile'))
+                session['username']= user_found['username']
+                return redirect(url_for('views.profile'  ))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
@@ -94,7 +93,7 @@ def login():
 #######################
 @auth.route('/logout')
 def logout():
-    return redirect(url_for('/auth.login'))
+    return redirect(url_for('auth.login'))
 
 #######################
 # sign up

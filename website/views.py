@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template,session, flash, redirect, url_for
 
 views = Blueprint ('views', __name__)
 
@@ -8,4 +8,8 @@ def index():
 
 @views.route('/profile')
 def profile():
-    return render_template('profile.html', custom_style="profile")
+    username = session.get('username')
+    if not username:
+        flash('Please log in first', category='error')
+        return redirect(url_for('auth.login'))
+    return render_template('profile.html', custom_style="profile", username = username)
