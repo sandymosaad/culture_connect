@@ -2,6 +2,62 @@
 {% block title %} Profile {% endblock %}
 {% block content %}
 
-<h1>Welcome {{username}}</h1>
+<div class="welcome-section"> 
+    <h1 >Welcome {{username}} in Your Profile</h1>
+    <p>Here are your posts:</p>
+    <p>You haven't added any posts yet. Click "Add a Post" to get started!</p>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPostModal">
+    Add a Post
+    </button>
+</div>
+
+<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="addPostModalLabel">New Post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="{{ url_for('views.add_post') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Title of post</label>
+                    <input type="text" name="title" id="title" class="form-control" placeholder="Enter post title" required>
+                </div>
+                <div class="form-group">
+                    <label for="body">Body Of post</label>
+                    <textarea name="body" id="body" class="form-control" placeholder="Write something interesting..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" name="country" id="country" class="form-control"  placeholder="Enter your country name" required>
+                </div>
+                <div class="form-group">
+                    <label for="flag">Flag of your country</label>
+                    <input type="file" name="flag" id="flag" class="form-control" accept="image/*" required >
+                </div>
+                <div class="form-group">
+                    <label for="post_image">Do you want to uplode image?</label>
+                    <input type="file" name="post_image" id="post_image" class="form-control" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" id="category" class="form-select" required>
+                        <option value="" selected disabled>Select post category"</option>
+                        <option value="story">Story</option>
+                        <option value="tourist_attraction">Tourist Attraction</option>
+                        <option value="dish">Dish</option>
+                        <option value="quote">Quote</option>
+                    </select>
+                </div>
+
+            
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

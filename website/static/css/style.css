@@ -94,7 +94,18 @@ body {
     background: #2f6dd9;
 }
 
-/*-------------------------------------------------------------- ---------------------------------------------*/
+/*--------------------------------------------------------------h1 p ---------------------------------------------*/
+h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+ p {
+    font-size: 1.3rem;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
 /*--------------------    alert for error ------------------------------*/
 
 .section-alert {
@@ -137,4 +148,41 @@ body {
     font-size: 20px;
     cursor: pointer;
     color: inherit;
+}
+
+/* --------------------------------------------------------- forms ---------------------------------------------- */
+
+/*form group */
+.form-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* form link*/
+.form-link {
+    margin-top: 15px;
+    color: #444;
+}
+.form-link a {
+    color: #4c8bf5;
+    text-decoration: none;
+}
+
+.form-link a:hover {
+    text-decoration: underline;
 }

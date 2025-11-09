@@ -1,24 +1,28 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="/static/images/world-map.jpg" alt="home"></a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Global</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sign-up">Sign up</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<form action="">
+    <label for="title">Title of post</label>
+    <input type="text" name="title" id="title">
+
+    <label for="body">Body Of post</label>
+    <textarea name="body" id="body"></textarea>
+
+    <label for="country">country</label>
+    <input type="text" name="country" id="country">
+
+    <label for="flag">Flag of your country</label>
+    <input type="image" name="flag" id="flag">
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Catgory</button>
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li class="dropdown-item"> Story</li>
+    <li class="dropdown-item"> tourist attraction</li>
+    <li class="dropdown-item"> dish </li>
+    <li class="dropdown-item"> qoute</li>
+  </ul>
+</div>
+
+
+</form>

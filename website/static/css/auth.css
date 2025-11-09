@@ -1,4 +1,3 @@
-/* --------------------------------------------------------- forms ---------------------------------------------- */
 /*form*/
 form{
     background-color: white;
@@ -23,38 +22,4 @@ form:hover {
 form h1 {
     margin-bottom: 20px;
     color: #333;
-}
-/*form group */
-.form-group {
-    text-align: left;
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    margin-bottom: 6px;
-    font-weight: 500;
-    color: #333;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #bbb;
-    font-size: 1rem;
-    box-sizing: border-box;
-}
-
-/* form link*/
-.form-link {
-    margin-top: 15px;
-    color: #444;
-}
-.form-link a {
-    color: #4c8bf5;
-    text-decoration: none;
-}
-
-.form-link a:hover {
-    text-decoration: underline;
 }

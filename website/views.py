@@ -13,3 +13,7 @@ def profile():
         flash('Please log in first', category='error')
         return redirect(url_for('auth.login'))
     return render_template('profile.html', custom_style="profile", username = username)
+
+@views.route('/add_post')
+def add_post():
+    return render_template('index.html', custom_style="index")
