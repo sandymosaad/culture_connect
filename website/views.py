@@ -3,6 +3,31 @@ import datetime
 import os
 
 views = Blueprint ('views', __name__)
+
+class Post:
+    def __init__(self, title, body, country, category, date, flag, username,post_image=None):
+        self.title = title
+        self.body = body
+        self.country = country
+        self.category = category
+        self.date = date
+        self.flag = flag
+        self.post_image = post_image
+        self.username = username
+
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "body": self.body,
+            "country": self.country,
+            "category": self.category,
+            "date": self.date,
+            "flag": self.flag,
+            "post_image": self.post_image,
+            "username": self.username
+        }
+      
+
 @views.route('/')
 def index():
     return render_template('index.html', custom_style="index")
@@ -13,7 +38,7 @@ def profile():
     if not username:
         flash('Please log in first', category='error')
         return redirect(url_for('auth.login'))
-    post =None
+    
     if request.method=='POST':
         title = request.form.get('title')
         body = request.form.get('body')
@@ -24,19 +49,14 @@ def profile():
         date = datetime.date.today()    
         
         new_name_flag = save_image(flag_file ,'flag' ,username)
-        new_name_post_image = save_image( post_image_file, 'post_image' , username)
-
-        post = {
-            "title": title,
-            "body": body,
-            "country": country,
-            "category": category,
-            "date": date,
-            "flag": new_name_flag,
-            "post_image": new_name_post_image,
-            "username": username
-        }
-        return render_template('profile.html', username = username, post=post ,  custom_style="profile" )
+        if post_image_file:
+            new_name_post_image = save_image( post_image_file, 'post_image' , username)
+            new_post =Post(title, body, country, category, date, new_name_flag, username , new_name_post_image)
+        else:
+            new_post =Post(title, body, country, category, date, new_name_flag, username )
+        
+        post_dict = new_post.to_dict()
+        return render_template('profile.html', username = username, post=post_dict ,  custom_style="profile" )
     
     return render_template('profile.html', custom_style="profile" )
 
