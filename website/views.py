@@ -1,20 +1,25 @@
-from flask import Blueprint, render_template,session, flash, redirect, url_for, request, current_app
-import datetime 
-import os
+# Import necessary packages from Flask
+from flask import Blueprint, render_template, session, flash, redirect, url_for, request, current_app
+import datetime  # For handling dates
+import os        # For working with files and directories
 
-views = Blueprint ('views', __name__)
+# Define a Blueprint to organize routes
+views = Blueprint('views', __name__)
 
+# Define the Post class to store information for each post
 class Post:
-    def __init__(self, title, body, country, category, date, flag, username,post_image=None):
+    def __init__(self, title, body, country, category, date, flag, username, post_image=None):
+        # Basic attributes of the post
         self.title = title
         self.body = body
         self.country = country
         self.category = category
         self.date = date
         self.flag = flag
-        self.post_image = post_image
+        self.post_image = post_image  # Optional post image
         self.username = username
 
+    # Method to convert the Post object to a dictionary
     def to_dict(self):
         return {
             "title": self.title,
@@ -26,49 +31,67 @@ class Post:
             "post_image": self.post_image,
             "username": self.username
         }
-      
 
+# Homepage route
 @views.route('/')
 def index():
     return render_template('index.html', custom_style="index")
 
+# Profile page route
 @views.route('/profile', methods=['POST', 'GET'])
 def profile():
+    # Get the username from the session
     username = session.get('username')
+    
+    # If the user is not logged in, redirect to login
     if not username:
         flash('Please log in first', category='error')
         return redirect(url_for('auth.login'))
     
-    if request.method=='POST':
+    # Handle POST request when creating a new post
+    if request.method == 'POST':
+        # Get form data
         title = request.form.get('title')
         body = request.form.get('body')
         country = request.form.get('country')
         category = request.form.get('category')
-        flag_file = request.files.get('flag')
-        post_image_file = request.files.get('post_image')
-        date = datetime.date.today()    
+        flag_file = request.files.get('flag')            # Country flag
+        post_image_file = request.files.get('post_image')  # Optional post image
+        date = datetime.date.today()  # Today's date
         
-        new_name_flag = save_image(flag_file ,'flag' ,username)
+        # Save the flag image and get the new filename
+        new_name_flag = save_image(flag_file, 'flag', username)
+        
+        # Save post image if provided
         if post_image_file:
-            new_name_post_image = save_image( post_image_file, 'post_image' , username)
-            new_post =Post(title, body, country, category, date, new_name_flag, username , new_name_post_image)
+            new_name_post_image = save_image(post_image_file, 'post_image', username)
+            # Create a new Post object with the post image
+            new_post = Post(title, body, country, category, date, new_name_flag, username, new_name_post_image)
         else:
-            new_post =Post(title, body, country, category, date, new_name_flag, username )
+            # Create a new Post object without a post image
+            new_post = Post(title, body, country, category, date, new_name_flag, username)
         
+        # Convert the post to a dictionary to pass to the template
         post_dict = new_post.to_dict()
-        return render_template('profile.html', username = username, post=post_dict ,  custom_style="profile" )
+        
+        # Render the profile page with the new post
+        return render_template('profile.html', username=username, post=post_dict, custom_style="profile")
     
-    return render_template('profile.html', custom_style="profile" )
+    # Render the profile page for GET requests
+    return render_template('profile.html', custom_style="profile")
 
-# save the image and return the new name
-def save_image(file, type_image ,username ):
-        ext =file.filename.rsplit('.', 1)[1]
-        new_name = f"{username}_{type_image}.{ext}"
+# Function to save uploaded images and return the new filename
+def save_image(file, type_image, username):
+    # Extract the file extension
+    ext = file.filename.rsplit('.', 1)[1]
+    # Create a new filename like "username_type.ext"
+    new_name = f"{username}_{type_image}.{ext}"
+    # Full path where the file will be saved
+    save_path = os.path.join(current_app.config['UPLOAD_FOLDER'], new_name)
+    # Save the file to the server
+    file.save(save_path)
+    return new_name
 
-        save_path = os.path.join(current_app.config['UPLOAD_FOLDER'], new_name)
-        file.save(save_path)
-        return new_name
-    
 # def get_data():
 #     if request.method=='POST':
 #         title = request.form.get('title')
