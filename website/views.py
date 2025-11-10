@@ -2,13 +2,13 @@
 from flask import Blueprint, render_template, session, flash, redirect, url_for, request, current_app
 import datetime  # For handling dates
 import os        # For working with files and directories
-
+from .shared import add_item, get_items
 # Define a Blueprint to organize routes
 views = Blueprint('views', __name__)
 
 # Define the Post class to store information for each post
 class Post:
-    def __init__(self, title, body, country, category, date, flag, username, post_image=None):
+    def __init__(self, title, body, country, category, date, flag, username,id=1, post_image=None):
         # Basic attributes of the post
         self.title = title
         self.body = body
@@ -16,8 +16,9 @@ class Post:
         self.category = category
         self.date = date
         self.flag = flag
-        self.post_image = post_image  # Optional post image
         self.username = username
+        self.id = id
+        self.post_image = post_image  # Optional post image
 
     # Method to convert the Post object to a dictionary
     def to_dict(self):
@@ -26,10 +27,13 @@ class Post:
             "body": self.body,
             "country": self.country,
             "category": self.category,
-            "date": self.date,
+            "date": str(self.date),
             "flag": self.flag,
+            "username": self.username,
+            "post_id" : self.id,
             "post_image": self.post_image,
-            "username": self.username
+
+
         }
 
 # Homepage route
@@ -52,6 +56,11 @@ def profile():
     if request.method == 'POST':
         # Get form data
         post_data = get_post_data()
+        
+        if len(get_items('posts')) == 0:
+            post_id=1
+        else:
+            post_id=len(get_items('posts')) + 1
 
         # Save the flag image and get the new filename
         new_name_flag = save_image(post_data['flag_file'], 'flag', username)
@@ -68,7 +77,9 @@ def profile():
                 post_data['date'],
                 new_name_flag,
                 username,
-                new_name_post_image)
+                post_id,
+                new_name_post_image,
+                )
         else:
             # Create a new Post object without a post image
             new_post = Post(
@@ -78,16 +89,19 @@ def profile():
                 post_data['category'],
                 post_data['date'],
                 new_name_flag,
-                username)
+                username,
+                post_id
+                )
         
         # Convert the post to a dictionary to pass to the template
         post_dict = new_post.to_dict()
         
+        add_item(post_dict,'posts' )
         # Render the profile page with the new post
         return render_template('profile.html', username=username, post=post_dict, custom_style="profile")
     
     # Render the profile page for GET requests
-    return render_template('profile.html', custom_style="profile")
+    return render_template('profile.html', custom_style="profile", username = username)
 
 # Function to save uploaded images and return the new filename
 def save_image(file, type_image, username):
@@ -109,7 +123,7 @@ def get_post_data():
         category = request.form.get('category')
         flag_file = request.files.get('flag')            # Country flag
         post_image_file = request.files.get('post_image')  # Optional post image
-        date = datetime.date.today()  # Today's date
+        date = str(datetime.date.today())  # Today's date string to can story it in json
         return {
         "title": title,
         "body": body,

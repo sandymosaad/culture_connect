@@ -11,6 +11,7 @@
       ├── auth.py
       ├── models.py
       ├── views.py
+      |__ shared.py
       │
       ├── static/
       │     ├── css/style.css
