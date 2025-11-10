@@ -51,25 +51,34 @@ def profile():
     # Handle POST request when creating a new post
     if request.method == 'POST':
         # Get form data
-        title = request.form.get('title')
-        body = request.form.get('body')
-        country = request.form.get('country')
-        category = request.form.get('category')
-        flag_file = request.files.get('flag')            # Country flag
-        post_image_file = request.files.get('post_image')  # Optional post image
-        date = datetime.date.today()  # Today's date
-        
+        post_data = get_post_data()
+
         # Save the flag image and get the new filename
-        new_name_flag = save_image(flag_file, 'flag', username)
+        new_name_flag = save_image(post_data['flag_file'], 'flag', username)
         
         # Save post image if provided
-        if post_image_file:
-            new_name_post_image = save_image(post_image_file, 'post_image', username)
+        if post_data['post_image_file']:
+            new_name_post_image = save_image(post_data['post_image_file'], 'post_image', username)
             # Create a new Post object with the post image
-            new_post = Post(title, body, country, category, date, new_name_flag, username, new_name_post_image)
+            new_post = Post(
+                post_data['title'],
+                post_data['body'],
+                post_data['country'],
+                post_data['category'],
+                post_data['date'],
+                new_name_flag,
+                username,
+                new_name_post_image)
         else:
             # Create a new Post object without a post image
-            new_post = Post(title, body, country, category, date, new_name_flag, username)
+            new_post = Post(
+                post_data['title'],
+                post_data['body'],
+                post_data['country'],
+                post_data['category'],
+                post_data['date'],
+                new_name_flag,
+                username)
         
         # Convert the post to a dictionary to pass to the template
         post_dict = new_post.to_dict()
@@ -92,14 +101,22 @@ def save_image(file, type_image, username):
     file.save(save_path)
     return new_name
 
-# def get_data():
-#     if request.method=='POST':
-#         title = request.form.get('title')
-#         body = request.form.get('body')
-#         country = request.form.get('country')
-#         category = request.form.get('category')
-#         date = datetime.date.today()
-#         return [title, body, country, category, date]
-# @views.route('/add-post', methods=['POST'])
-# def add_post():
-#     return "Received"
+# Get form data
+def get_post_data():
+        title = request.form.get('title')
+        body = request.form.get('body')
+        country = request.form.get('country')
+        category = request.form.get('category')
+        flag_file = request.files.get('flag')            # Country flag
+        post_image_file = request.files.get('post_image')  # Optional post image
+        date = datetime.date.today()  # Today's date
+        return {
+        "title": title,
+        "body": body,
+        "country": country,
+        "category": category,
+        "date": date,
+        "flag_file": flag_file,
+        "post_image_file": post_image_file
+        }
+
