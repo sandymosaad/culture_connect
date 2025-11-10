@@ -5,23 +5,25 @@ body {
 .welcome-section{
     text-align: center;
 }
-.cards{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cards {
+    margin: 20px;
+        display: flex;
+    justify-content: space-around; 
 }
+
+
 .card {
-    width: 30% !important;
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
-    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    margin: 20px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+
 }
+
 .card:hover{
     transform: scale(1.02);
     transition: 0.3s;

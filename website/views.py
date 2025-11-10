@@ -95,14 +95,24 @@ def profile():
         
         # Convert the post to a dictionary to pass to the template
         post_dict = new_post.to_dict()
-        
         add_item(post_dict,'posts' )
-        # Render the profile page with the new post
-        return render_template('profile.html', username=username, post=post_dict, custom_style="profile")
-    
-    # Render the profile page for GET requests
-    return render_template('profile.html', custom_style="profile", username = username)
 
+        user_posts = get_user_posts(username)
+
+        # Render the profile page with the new post
+        return render_template('profile.html', username=username, posts = user_posts, custom_style="profile")
+    user_posts = get_user_posts(username)
+    # Render the profile page for GET requests
+    return render_template('profile.html', custom_style="profile", username = username ,posts = user_posts)
+
+# get all posts for the current user
+def get_user_posts(username):
+    all_posts =get_items('posts')
+    user_posts = []
+    for post in all_posts:
+        if (post["username"] == username):
+            user_posts.append(post)
+    return user_posts
 # Function to save uploaded images and return the new filename
 def save_image(file, type_image, username):
     # Extract the file extension

@@ -4,9 +4,15 @@
 
     <div class="welcome-section"> 
         <h1 >Welcome {{username}} in Your Profile</h1>
-        {% if post %}
-                <p>Here are your posts:</p>
-
+        {% if posts %}
+            <p>Here are your posts:</p>
+            <div class="row cards  g-4">
+                {% for post in posts %}
+                    <div class="col-12 col-md-5 card">
+                        {% include "card.html" %}
+                    </div>
+                {% endfor %}
+            </div>
         {% else %}
                     <p>You haven't added any posts yet. Click "Add a Post" to get started!</p>
         {% endif %}
@@ -65,8 +71,5 @@
     </div>
 
 
-{% if post %}
-    {% include "card.html" %}
-{% endif %}
 
 {% endblock %}

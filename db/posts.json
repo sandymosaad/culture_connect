@@ -42,5 +42,27 @@
         "username": "sandy",
         "post_id": 4,
         "post_image": null
+    },
+    {
+        "title": "sd,n ",
+        "body": "dsnfmanb",
+        "country": "smbdna",
+        "category": "Dish",
+        "date": "2025-11-10",
+        "flag": "sandy_flag.jpg",
+        "username": "sandy",
+        "post_id": 5,
+        "post_image": "sandy_post_image.jpeg"
+    },
+    {
+        "title": "title",
+        "body": "body post\r\nAdd logout button/link to navbar\r\nMake it visible only when user is logged inAdd logout button/link to navbar\r\nMake it visible only when user is logged inAdd logout button/link to navbar\r\nMake it visible only when user is logged in",
+        "country": "egypt",
+        "category": "Dish",
+        "date": "2025-11-10",
+        "flag": "sandy_flag.jpeg",
+        "username": "sandy",
+        "post_id": 6,
+        "post_image": "sandy_post_image.jpg"
     }
 ]
