@@ -4,9 +4,13 @@
 
     <div class="welcome-section"> 
         <h1 >Welcome {{username}} in Your Profile</h1>
-        <p>Here are your posts:</p>
-        <p>You haven't added any posts yet. Click "Add a Post" to get started!</p>
+        {% if post %}
+                <p>Here are your posts:</p>
 
+        {% else %}
+                    <p>You haven't added any posts yet. Click "Add a Post" to get started!</p>
+        {% endif %}
+        
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPostModal">
         Add a Post
         </button>
@@ -45,10 +49,10 @@
                         <label for="category">Category</label>
                         <select name="category" id="category" class="form-select" required>
                             <option value="" selected disabled>Select post category"</option>
-                            <option value="story">Story</option>
-                            <option value="tourist_attraction">Tourist Attraction</option>
-                            <option value="dish">Dish</option>
-                            <option value="quote">Quote</option>
+                            <option value="Story">Story</option>
+                            <option value="Tourist Attraction">Tourist Attraction</option>
+                            <option value="Dish">Dish</option>
+                            <option value="Quote">Quote</option>
                         </select>
                     </div>
 
@@ -61,60 +65,8 @@
     </div>
 
 
-    <div class="cards">
-        <div class="card flex justfiy-content" style="width: 18rem;" >
-            <div class="top-card">
-                <h5 class="card-title">{{title}}</h5>
-                <img src="/static/images/flag.jpeg" class="flag-img" alt="flag-img">
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    {{body}}
-                </p>
-                <img src="/static/images/flag.jpeg" alt="" >
-            </div>
-            <div class="info">
-                <p>{{username}}</p>
-                <p>{{category}}</p>
-                <p>{{date}}</p>
-            </div>
-        </div>
-        <div class="card flex justfiy-content" style="width: 18rem;" >
-            <div class="top-card">
-                <h5 class="card-title">Card title</h5>
-                <img src="/static/images/flag.jpeg" class="flag-img" alt="flag-img">
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card’s content.
-                    Some quick example text to build on the card title and make up the bulk of the card’s content.
-                </p>
-                <img src="/static/images/flag.jpeg" alt="" >
-            </div>
-            <div class="info">
-                <p>sandy</p>
-                <p>Tourist Attraction</p>
-                <p>5/11/2025</p>
-            </div>
-        </div>
-        <div class="card flex justfiy-content" style="width: 18rem;" >
-            <div class="top-card">
-                <h5 class="card-title">Card title</h5>
-                <img src="/static/images/flag.jpeg" class="flag-img" alt="flag-img">
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card’s content.
-                    Some quick example text to build on the card title and make up the bulk of the card’s content.
-                </p>
-                <img src="/static/images/flag.jpeg" alt="" >
-            </div>
-            <div class="info">
-                <p>sandy</p>
-                <p>Tourist Attraction</p>
-                <p>5/11/2025</p>
-            </div>
-        </div>
-    </div>
+{% if post %}
+    {% include "card.html" %}
+{% endif %}
 
 {% endblock %}

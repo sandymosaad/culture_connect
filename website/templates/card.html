@@ -1,0 +1,19 @@
+<div class="cards">
+    <div class="card flex justfiy-content" style="width: 18rem;" >
+        <div class="top-card">
+            <h5 class="card-title">{{ post.title}}</h5>
+            <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" class="flag-img" alt="flag-img">
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{ post.body}}
+            </p>
+            <img src="{{ url_for('static', filename='uploads/' ~  post.post_image) }}" alt="" >
+        </div>
+        <div class="info">
+            <p>{{ post.username}}</p>
+            <p>{{ post.category}}</p>
+            <p>{{ post.date}}</p>
+        </div>
+    </div>
+</div>
