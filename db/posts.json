@@ -7,17 +7,6 @@
         "date": "2025-11-10",
         "flag": "test_flag.jpeg",
         "username": "test",
-        "post_id": 1,
-        "post_image": null
-    },
-    {
-        "title": "tetst",
-        "body": "sadv xgs adsfmac , l; mmanvsm",
-        "country": "egypt",
-        "category": "Story",
-        "date": "2025-11-10",
-        "flag": "test_flag.jpeg",
-        "username": "test",
         "post_id": 2,
         "post_image": null
     },

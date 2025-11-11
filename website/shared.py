@@ -42,7 +42,7 @@ def add_item(item ,file_name ):
 #######################
 # get items 
 #######################
-def get_items(file_name):
+def get_items(file_name): 
     file_path = get_db_path(file_name)
     if not path.exists(file_path):
         return []
@@ -51,3 +51,9 @@ def get_items(file_name):
     with open(file_path, 'r') as f:
         items = json.load(f)
         return items
+
+
+def update_posts(file_name , posts):
+    file_path = get_db_path(file_name)
+    with open(file_path, 'w') as f:
+        json.dump(posts, f, indent=4)

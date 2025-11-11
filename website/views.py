@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template, session, flash, redirect, url_for, request, current_app
 import datetime  # For handling dates
 import os        # For working with files and directories
-from .shared import add_item, get_items
+from .shared import add_item, get_items,update_posts
 # Define a Blueprint to organize routes
 views = Blueprint('views', __name__)
 
@@ -105,6 +105,7 @@ def profile():
     # Render the profile page for GET requests
     return render_template('profile.html', custom_style="profile", username = username ,posts = user_posts)
 
+
 # get all posts for the current user
 def get_user_posts(username):
     all_posts =get_items('posts')
@@ -113,6 +114,8 @@ def get_user_posts(username):
         if (post["username"] == username):
             user_posts.append(post)
     return user_posts
+
+
 # Function to save uploaded images and return the new filename
 def save_image(file, type_image, username):
     # Extract the file extension
@@ -143,4 +146,17 @@ def get_post_data():
         "flag_file": flag_file,
         "post_image_file": post_image_file
         }
+
+
+@views.route("/delete/<int:post_id>", methods=["POST"])
+def delete_post(post_id):
+    try:
+        posts = get_items('posts')
+        posts = [p for p in posts if int(p["post_id"]) != post_id]
+        update_posts('posts',posts)
+        return {"success": True}
+    except Exception as e:
+        print("DELETE ERROR:", e)
+        return {"success": False, "error": str(e)}, 500
+
 
