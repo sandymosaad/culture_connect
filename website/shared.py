@@ -19,24 +19,31 @@ def add_item(item ,file_name ):
     user must be a dictionary: {"id": 1, "username": "...", "email": "...", "password": "..."}
     """
     file_path = get_db_path(file_name)
-
-    # If file doesn't exist yet, start with empty list
-    if not path.exists(file_path):
-        with open(file_path, 'w') as f:
-            json.dump([], f)
-
-    if path.getsize(file_path) == 0:
-        items = []
+    data = None
+    # If file doesn't exist yet,or empty start with empty list
+    #------------------
+    if not path.exists(file_path) or path.getsize(file_path) == 0:
+        data = {
+            "next_id": 1,
+            file_name: []  
+        }
     else:
-        with open(file_path, 'r') as f:
-            items = json.load(f)
-
-    # Add new item
-    items.append(item)
-
-    # Write updated list back
+        try:
+            with open(file_path, 'r') as f:
+                data = json.load(f)
+        except:
+            data = {
+                "next_id": 1,
+                file_name: []
+            }
+    new_id = data['next_id']
+    item['post_id'] = new_id
+    
+    data[file_name].append(item)
+    data['next_id'] = new_id + 1
     with open(file_path, 'w') as f:
-        json.dump(items, f, indent=4)
+        json.dump(data, f, indent=4)
+
         
         
 #######################
@@ -44,16 +51,26 @@ def add_item(item ,file_name ):
 #######################
 def get_items(file_name): 
     file_path = get_db_path(file_name)
-    if not path.exists(file_path):
-        return []
-    if path.getsize(file_path) == 0:
-        return []
-    with open(file_path, 'r') as f:
-        items = json.load(f)
-        return items
+    if not path.exists(file_path) or path.getsize(file_path) == 0:
+            return {
+                "next_id": 1,
+                file_name: []
+            }
+        
+    try:
+        with open(file_path, 'r') as f:
+            return json.load(f)
+    except:
+        # Handle corrupted file case
+        return {
+            "next_id": 1,
+            file_name: []
+            }
 
 
 def update_posts(file_name , posts):
     file_path = get_db_path(file_name)
+    data = get_items(file_name)
+    data[file_name]= posts
     with open(file_path, 'w') as f:
-        json.dump(posts, f, indent=4)
+        json.dump(data, f, indent=4)

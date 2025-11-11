@@ -16,7 +16,7 @@
             <p>{{ post.category}}</p>
             <p>{{ post.date}}</p>
             <div>
-                <button class='btn' onclick="deletePost({{ post.post_id }})" onclick="window.location.href='{{ url_for('views.delete_post', post_id=post.post_id) }}'"><i class="fa fa-trash-o" style="font-size:36px"></i></button >
+                <button class='btn' onclick="deletePost({{ post.post_id }})"><i class="fa fa-trash-o" style="font-size:36px"></i></button >
                 <button class='btn' onclick="window.location.href='{{ url_for('views.profile', post_id=post.post_id) }}'" ><i class="fa fa-edit" style="font-size:36px"></i> </button >
             </div>
         </div>

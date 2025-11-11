@@ -6,7 +6,7 @@ function deletePost(postId) {
     .then(data => {
         if (data.success) {
             document.getElementById(`post-${postId}`).remove();
-            // change the par if user delete all posts 
+            // change the para if user delete all posts 
             const remainingPosts = document.querySelectorAll('.card[id^="post-"]').length; 
             const statusParagraph = document.querySelector('.checkRemainingPostsPar');
             if (remainingPosts==0){

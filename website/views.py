@@ -8,7 +8,7 @@ views = Blueprint('views', __name__)
 
 # Define the Post class to store information for each post
 class Post:
-    def __init__(self, title, body, country, category, date, flag, username,id=1, post_image=None):
+    def __init__(self, title, body, country, category, date, flag, username, id, post_image=None):
         # Basic attributes of the post
         self.title = title
         self.body = body
@@ -33,7 +33,6 @@ class Post:
             "post_id" : self.id,
             "post_image": self.post_image,
 
-
         }
 
 # Homepage route
@@ -56,14 +55,9 @@ def profile():
     if request.method == 'POST':
         # Get form data
         post_data = get_post_data()
-        
-        if len(get_items('posts')) == 0:
-            post_id=1
-        else:
-            post_id=len(get_items('posts')) + 1
-
         # Save the flag image and get the new filename
         new_name_flag = save_image(post_data['flag_file'], 'flag', username)
+        
         
         # Save post image if provided
         if post_data['post_image_file']:
@@ -77,8 +71,8 @@ def profile():
                 post_data['date'],
                 new_name_flag,
                 username,
-                post_id,
-                new_name_post_image,
+                id =None,
+                post_image= new_name_post_image
                 )
         else:
             # Create a new Post object without a post image
@@ -90,17 +84,18 @@ def profile():
                 post_data['date'],
                 new_name_flag,
                 username,
-                post_id
+                id =None,
                 )
         
         # Convert the post to a dictionary to pass to the template
         post_dict = new_post.to_dict()
-        add_item(post_dict,'posts' )
-
+            
+        add_item(post_dict, 'posts')
         user_posts = get_user_posts(username)
 
-        # Render the profile page with the new post
-        return render_template('profile.html', username=username, posts = user_posts, custom_style="profile")
+        #return render_template('profile.html', custom_style="profile", username = username ,posts = user_posts)
+        return redirect(url_for('views.profile'))
+    
     user_posts = get_user_posts(username)
     # Render the profile page for GET requests
     return render_template('profile.html', custom_style="profile", username = username ,posts = user_posts)
@@ -110,7 +105,7 @@ def profile():
 def get_user_posts(username):
     all_posts =get_items('posts')
     user_posts = []
-    for post in all_posts:
+    for post in all_posts['posts']:
         if (post["username"] == username):
             user_posts.append(post)
     return user_posts
@@ -148,15 +143,14 @@ def get_post_data():
         }
 
 
+
 @views.route("/delete/<int:post_id>", methods=["POST"])
 def delete_post(post_id):
     try:
         posts = get_items('posts')
-        posts = [p for p in posts if int(p["post_id"]) != post_id]
+        posts = [p for p in posts['posts'] if int(p["post_id"]) != int(post_id)]
         update_posts('posts',posts)
         return {"success": True}
     except Exception as e:
         print("DELETE ERROR:", e)
-        return {"success": False, "error": str(e)}, 500
-
-    return render_template('profile.html')
+        return {"success": False, "error": str(e)}, 500 
