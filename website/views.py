@@ -159,4 +159,4 @@ def delete_post(post_id):
         print("DELETE ERROR:", e)
         return {"success": False, "error": str(e)}, 500
 
-
+    return render_template('profile.html')

@@ -5,7 +5,7 @@
     <div class="welcome-section"> 
         <h1 >Welcome {{username}} in Your Profile</h1>
         {% if posts %}
-            <p>Here are your posts:</p>
+            <p class="checkRemainingPostsPar">Here are your posts:</p>
             <div class="row cards  g-4">
                 {% for post in posts %}
                     <div class="col-12 col-md-5 card" id="post-{{ post.post_id }}">
@@ -14,7 +14,7 @@
                 {% endfor %}
             </div>
         {% else %}
-                    <p>You haven't added any posts yet. Click "Add a Post" to get started!</p>
+                    <p class="checkRemainingPostsPar">You haven't added any posts yet. Click "Add a Post" to get started!</p>
         {% endif %}
         
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPostModal">
