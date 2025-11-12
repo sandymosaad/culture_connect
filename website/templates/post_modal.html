@@ -21,7 +21,7 @@
                     
                     <div class="form-group">
                         <label for="{{ prefix }}title">Title of post</label>
-                        <input type="text" name="title" id="{{ prefix }}title" class="form-control" required>
+                        <input type="text" name="title" id="{{ prefix }}title" class="form-control"  placeholder="Enter the title of post"  required>
                     </div>
                     <div class="form-group">
                         <label for="{{ prefix }}body">Body Of post</label>
@@ -33,21 +33,21 @@
                     </div>
 
                     {% if is_edit %}
-                        <img id="edit-flag-img" src="" style="max-width: 100px;">
+                        <img id="show-edit-flag-img" src="" style="max-width: 100px;">
                     {% endif %}
                     
                     <div class="form-group">
                         <label for="{{ prefix }}flag">Flag of your country</label>
-                        <input type="file" name="flag" id="{{ prefix }}flag" class="form-control" accept="image/*" {% if not is_edit %} required {% endif %} >
+                        <input type="file" name="flag" id="{{ prefix }}flag-img" class="form-control" accept="image/*" {% if not is_edit %} required {% endif %} >
                     </div>
                     <div class="form-group">
                         {% if is_edit %}
-                        <img id="edit-post-img" src="" style="max-width: 100px;">
-                        <label for="{{ prefix }}post_image">Do you want to Change image?</label>
+                        <img id="show-edit-post-img" src="" style="max-width: 100px;">
+                        <label for="{{ prefix }}post-img" id="edit-image-label">Do you want to Change image?</label>
                         {%else %}
-                        <label for="post_image">Do you want to uplode image?</label>
+                        <label for="post-img">Do you want to uplode image?</label>
                         {% endif %}
-                        <input type="file" name="post_image" id="{{ prefix }}post_image" class="form-control" accept="image/*">
+                        <input type="file" name="post-img" id="{{ prefix }}post-img" class="form-control" accept="image/*">
                     </div>
                     <div class="form-group">
                         <label for="{{ prefix }}category">Category</label>
@@ -74,4 +74,3 @@
         </div>
     </div>
 </div>
-git commit -m "Create post_modal.html for adding and editing posts, include it in profile page, and start implementing edit post with data prefill in modal"

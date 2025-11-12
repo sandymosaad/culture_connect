@@ -74,3 +74,4 @@ def update_posts(file_name , posts):
     data[file_name]= posts
     with open(file_path, 'w') as f:
         json.dump(data, f, indent=4)
+    

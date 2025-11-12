@@ -73,6 +73,7 @@ def profile():
                 username,
                 id =None,
                 post_image= new_name_post_image
+                
                 )
         else:
             # Create a new Post object without a post image
@@ -103,9 +104,11 @@ def profile():
 
 # get all posts for the current user
 def get_user_posts(username):
-    all_posts =get_items('posts')
+    data = get_items("posts")   
+    all_posts = data["posts"]
+    #all_posts =get_items('posts')
     user_posts = []
-    for post in all_posts['posts']:
+    for post in all_posts:
         if (post["username"] == username):
             user_posts.append(post)
     return user_posts
@@ -130,7 +133,7 @@ def get_post_data():
         country = request.form.get('country')
         category = request.form.get('category')
         flag_file = request.files.get('flag')            # Country flag
-        post_image_file = request.files.get('post_image')  # Optional post image
+        post_image_file = request.files.get('post-img')  # Optional post image
         date = str(datetime.date.today())  # Today's date string to can story it in json
         return {
         "title": title,
@@ -141,8 +144,6 @@ def get_post_data():
         "flag_file": flag_file,
         "post_image_file": post_image_file
         }
-
-
 
 @views.route("/delete/<int:post_id>", methods=["POST"])
 def delete_post(post_id):
@@ -155,17 +156,28 @@ def delete_post(post_id):
         print("DELETE ERROR:", e)
         return {"success": False, "error": str(e)}, 500 
     
-@views.route("/edit/<int:post_id>", methods=["POST"])
+
+@views.route('/edit/<int:post_id>', methods=['POST'])
 def edit_post(post_id):
+    data = get_items("posts")   
+    posts = data["posts"]
     try:
-        posts = get_items('posts')
-        post = [p for p in posts['posts'] if int(p["post_id"]) == int(post_id)]
-        update_post()
+        for post in posts:
+            if int(post["post_id"]) == int(post_id):
+                post["title"] = request.form.get("title")
+                post["body"] = request.form.get("body")
+                post["country"] = request.form.get("country")
+                post["category"] = request.form.get("category")
+                
+                if "post_image" in request.files and request.files["post_image"].filename:
+                    post["post_image"] = save_image(request.files["post_image"], 'post_image', post['username'])
+                
+                if "flag" in request.files and request.files["flag"].filename:
+                    post["flag"] = save_image(request.files["flag"], 'flag', post['username'])
+
+                break
+        update_posts("posts", posts)
         return {"success": True}
     except Exception as e:
-        print("updete ERROR:", e)
-        return {"success": False, "error": str(e)}, 500 
-    
-def update_post():
-    print('EDIT POST FLASK')
-    pass
+        print("EDIT ERROR:", e)
+        return {"success": False, "error": str(e)}, 500

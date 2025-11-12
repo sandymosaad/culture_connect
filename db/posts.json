@@ -1,15 +1,37 @@
 {
-    "next_id": 6,
+    "next_id": 11,
     "posts": [
         {
-            "title": "snafb fjshf",
-            "body": "kdsbnhjjsdfhj ",
-            "country": "kjj fh e",
+            "title": "tset 2SA",
+            "body": "sajfcbn",
+            "country": "ncbnnb",
             "category": "Tourist Attraction",
             "date": "2025-11-12",
             "flag": "sandy_flag.jpeg",
             "username": "sandy",
-            "post_id": 5,
+            "post_id": 7,
+            "post_image": "sandy_post_image.jpg"
+        },
+        {
+            "title": "TEST.,SNMZC",
+            "body": "BODY",
+            "country": "mnfsmfb",
+            "category": "Story",
+            "date": "2025-11-12",
+            "flag": "sandy_flag.jpg",
+            "username": "sandy",
+            "post_id": 8,
+            "post_image": "sandy_post_image.jpeg"
+        },
+        {
+            "title": "REAL TITLE",
+            "body": ".AMNFM",
+            "country": "MFDN B",
+            "category": "Tourist Attraction",
+            "date": "2025-11-12",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "post_id": 10,
             "post_image": "sandy_post_image.jpg"
         }
     ]
