@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, session, flash, redirect, url_for,
 import datetime  # For handling dates
 import os        # For working with files and directories
 from .shared import add_item, get_items,update_posts
+
 # Define a Blueprint to organize routes
 views = Blueprint('views', __name__)
 
@@ -181,3 +182,10 @@ def edit_post(post_id):
     except Exception as e:
         print("EDIT ERROR:", e)
         return {"success": False, "error": str(e)}, 500
+    
+
+@views.route('/global')
+def global_posts():
+    data = get_items("posts")   
+    all_posts = data["posts"]
+    return render_template('global_posts.html', custom_style="global", posts=all_posts)

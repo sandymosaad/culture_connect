@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
 <div class="top-card">
     <h5 class="card-title">{{ post.title}}</h5>
     <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" class="flag-img" alt="flag-img">

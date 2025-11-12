@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Global {% endblock %}
+
+{% block content%}
+<div class="global-header">
+    <h1 class="global-title">Explore Global Posts</h1>
+    <p class="global-subtitle">
+        Discover stories, quotes, and culture from people around the world
+    </p>
+</div>
+
+    {% if posts %}
+        <div class="row cards  g-4">
+            {% for post in posts %}
+                <div class="col-12 col-md-5 card" id="post-{{ post.post_id }}">
+                    {% include "card.html" %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+{% endblock %}
