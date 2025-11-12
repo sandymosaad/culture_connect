@@ -1,0 +1,45 @@
+.modal-dialog {
+    max-width: 650px;
+}
+
+.modal-content {
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2f6dd9;
+}
+
+/* Styling for form inputs in style.css */
+.form-group textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="file"] {
+  padding: 6px;
+}
+#show-edit-flag-img,
+#show-edit-post-img {
+    display: block;
+    width: 100%;
+    max-width: 120px;
+    height: 80px;
+    border-radius: 8px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+}
+
+
+.form-group:focus-within label {
+  color: #2f6dd9;
+  font-weight: 600;
+}
+

@@ -1,5 +1,5 @@
 {
-    "next_id": 11,
+    "next_id": 13,
     "posts": [
         {
             "title": "tset 2SA",
@@ -33,6 +33,28 @@
             "username": "sandy",
             "post_id": 10,
             "post_image": "sandy_post_image.jpg"
+        },
+        {
+            "title": "sfnanb",
+            "body": "masnf",
+            "country": "sabfn",
+            "category": "Tourist Attraction",
+            "date": "2025-11-12",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "post_id": 11,
+            "post_image": "sandy_post_image.jpg"
+        },
+        {
+            "title": "asfnamnb",
+            "body": "msandmb",
+            "country": "msnfb",
+            "category": "Tourist Attraction",
+            "date": "2025-11-12",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "post_id": 12,
+            "post_image": null
         }
     ]
 }
