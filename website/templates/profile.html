@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Profile {% endblock %}
+
 {% block content %}
 
     <div class="welcome-section"> 
@@ -17,59 +17,20 @@
                     <p class="checkRemainingPostsPar">You haven't added any posts yet. Click "Add a Post" to get started!</p>
         {% endif %}
         
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPostModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">
         Add a Post
         </button>
     </div>
 
-    <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addPostModalLabel">New Post</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ url_for('views.profile') }}" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="title">Title of post</label>
-                        <input type="text" name="title" id="title" class="form-control" placeholder="Enter post title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="body">Body Of post</label>
-                        <textarea name="body" id="body" class="form-control" placeholder="Write something interesting..." required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" name="country" id="country" class="form-control"  placeholder="Enter your country name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="flag">Flag of your country</label>
-                        <input type="file" name="flag" id="flag" class="form-control" accept="image/*" required >
-                    </div>
-                    <div class="form-group">
-                        <label for="post_image">Do you want to uplode image?</label>
-                        <input type="file" name="post_image" id="post_image" class="form-control" accept="image/*">
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <select name="category" id="category" class="form-select" required>
-                            <option value="" selected disabled>Select post category</option>
-                            <option value="Story">Story</option>
-                            <option value="Tourist Attraction">Tourist Attraction</option>
-                            <option value="Dish">Dish</option>
-                            <option value="Quote">Quote</option>
-                        </select>
-                    </div>
+    {#  include new post modal #}
+    {% set modal_id = "postModal" %}
+    {% set modal_title = "New Post" %}
+    {% set is_edit = False %}
+    {% include "post_modal.html" %}
 
-                
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-            </div>
-        </div>
-    </div>
-
-
-
+    {#  include edit post modal #}
+    {% set modal_id = "editPostModal" %}
+    {% set modal_title = "Edit Post" %}
+    {% set is_edit = True %}
+    {% include "post_modal.html" %}
 {% endblock %}

@@ -1,23 +1,24 @@
-        <div class="top-card">
-            <h5 class="card-title">{{ post.title}}</h5>
-            <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" class="flag-img" alt="flag-img">
-        </div>
-        <div class="card-body">
-            <p class="card-text">
-                {{ post.body}}
-            </p>
-            {% if post.post_image %}
-            <img src="{{ url_for('static', filename='uploads/' ~ post.post_image) }}" alt="" >
-            {% endif %}
+<div class="top-card">
+    <h5 class="card-title">{{ post.title}}</h5>
+    <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" class="flag-img" alt="flag-img">
+</div>
+<div class="card-body">
+    <p class="card-text">
+        {{ post.body}}
+    </p>
+    {% if post.post_image %}
+    <img src="{{ url_for('static', filename='uploads/' ~ post.post_image) }}" alt="" >
+    {% endif %}
 
-        </div>
-        <div class="info">
-            <p><i class="fa fa-user" style="font-size:24px"></i>{{ post.username}}</p>
-            <p>{{ post.category}}</p>
-            <p>{{ post.date}}</p>
-            <div>
-                <button class='btn' onclick="deletePost({{ post.post_id }})"><i class="fa fa-trash-o" style="font-size:36px"></i></button >
-                <button class='btn' onclick="window.location.href='{{ url_for('views.profile', post_id=post.post_id) }}'" ><i class="fa fa-edit" style="font-size:36px"></i> </button >
-            </div>
-        </div>
+</div>
+<div class="info">
+    <p><i class="fa fa-user" style="font-size:24px"></i>{{ post.username}}</p>
+    <p>{{ post.category}}</p>
+    <p>{{ post.date}}</p>
+    <div>
+        <button class='btn' onclick="deletePost({{ post.post_id }})"><i class="fa fa-trash-o" style="font-size:36px"></i></button >
+        <button class='btn' onclick="showEditModal('{{ post.post_id }}', '{{ post.title }}', '{{ post.body }}','{{ post.country }}','{{ post.category }}','{{ post.post_image }}','{{ post.flag }}')"
+        ><i class="fa fa-edit" style="font-size:36px"></i> </button >
+    </div>
+</div>
 

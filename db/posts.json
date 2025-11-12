@@ -1,4 +1,16 @@
 {
-    "next_id": 2,
-    "posts": []
+    "next_id": 6,
+    "posts": [
+        {
+            "title": "snafb fjshf",
+            "body": "kdsbnhjjsdfhj ",
+            "country": "kjj fh e",
+            "category": "Tourist Attraction",
+            "date": "2025-11-12",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "post_id": 5,
+            "post_image": "sandy_post_image.jpg"
+        }
+    ]
 }

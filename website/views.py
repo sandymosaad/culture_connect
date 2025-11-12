@@ -154,3 +154,18 @@ def delete_post(post_id):
     except Exception as e:
         print("DELETE ERROR:", e)
         return {"success": False, "error": str(e)}, 500 
+    
+@views.route("/edit/<int:post_id>", methods=["POST"])
+def edit_post(post_id):
+    try:
+        posts = get_items('posts')
+        post = [p for p in posts['posts'] if int(p["post_id"]) == int(post_id)]
+        update_post()
+        return {"success": True}
+    except Exception as e:
+        print("updete ERROR:", e)
+        return {"success": False, "error": str(e)}, 500 
+    
+def update_post():
+    print('EDIT POST FLASK')
+    pass
