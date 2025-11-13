@@ -1,24 +1,45 @@
 {% extends "base.html" %}
 
-{% block title %} Global {% endblock %}
+{% block title %}Global{% endblock %}
 
-{% block content%}
+{% block content %}
 <div class="header-section">
     <h1>Explore Global Posts</h1>
-    <p>
-        Discover stories, quotes, and culture from people around the world
-    </p>
+    <p>Discover stories, quotes, and culture from people around the world</p>
 </div>
 
-    {% if posts %}
-        <div class="row cards  g-4">
-            {% for post in posts %}
-                <div class="col-12 col-md-3 " id="post-{{ post.post_id }}">
-                    {% include "card.html" %}
-                </div>
-            {% endfor %}
+{% if posts %}
+    <div class="search-section">
+        <p >Filter Posts:</p>
+        <div class="filters d-flex gap-3 justify-content-center">
+            <select id="countryFilter" class="form-select" style="width: 200px;">
+                <option value="">All countries</option>
+                {% for c in countries_name %}
+                <option value="{{ c|lower }}">{{ c }}</option>
+                {% endfor %}
+            </select>
+
+            <select id="categoryFilter" class="form-select" style="width: 200px;">
+                <option value="">All categories</option>
+                <option value="story">Story</option>
+                <option value="tourist attraction">Tourist Attraction</option>
+                <option value="dish">Dish</option>
+                <option value="proverb">Proverb</option>
+            </select>
         </div>
-    {% endif %}
+    </div>
 
-
+    <div class="row cards g-4">
+        {% for post in posts %}
+        <div class="col-12 col-md-4"
+            id="post-{{ post.post_id }}"
+            data-country="{{ post.country|lower }}"
+            data-category="{{ post.category|lower }}">
+            {% include "card.html" %}
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-center">No posts available yet.</p>
+{% endif %}
 {% endblock %}

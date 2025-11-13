@@ -188,4 +188,13 @@ def edit_post(post_id):
 def global_posts():
     data = get_items("posts")   
     all_posts = data["posts"]
-    return render_template('global_posts.html', custom_style="global", posts=all_posts)
+    countries_name= get_countries_name(all_posts)
+
+    return render_template('global_posts.html', custom_style="global", posts=all_posts, countries_name = countries_name)
+
+def get_countries_name(posts):
+    countries_name=[]
+    for post in posts:
+        if post['country'] not in countries_name:
+            countries_name.append(post['country'])
+    return countries_name

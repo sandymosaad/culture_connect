@@ -1,5 +1,5 @@
 {
-    "next_id": 16,
+    "next_id": 17,
     "posts": [
         {
             "title": "The Grand Egyptian Museum",
@@ -33,6 +33,17 @@
             "username": "sandy",
             "post_id": 15,
             "post_image": null
+        },
+        {
+            "title": "asmbfbfb",
+            "body": "sdfmn",
+            "country": "samfn",
+            "category": "Story",
+            "date": "Nov 13, 2025",
+            "flag": "sandy_flag.webp",
+            "username": "sandy",
+            "post_id": 16,
+            "post_image": "sandy_post_image.png"
         }
     ]
 }
