@@ -13,7 +13,7 @@
     {% if posts %}
         <div class="row cards  g-4">
             {% for post in posts %}
-                <div class="col-12 col-md-5 card" id="post-{{ post.post_id }}">
+                <div class="col-12 col-md-3 " id="post-{{ post.post_id }}">
                     {% include "card.html" %}
                 </div>
             {% endfor %}

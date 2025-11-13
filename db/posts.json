@@ -1,60 +1,27 @@
 {
-    "next_id": 13,
+    "next_id": 15,
     "posts": [
         {
-            "title": "tset 2SA",
-            "body": "sajfcbn",
-            "country": "ncbnnb",
+            "title": "The Grand Egyptian Museum",
+            "body": "The Grand Egyptian Museum, located near the Giza Pyramids, is set to become the largest archaeological museum in the world. It houses thousands of ancient artifacts, including the full collection of King Tutankhamun\u2019s treasures.",
+            "country": "Egypt",
             "category": "Tourist Attraction",
-            "date": "2025-11-12",
+            "date": "Nov 13, 2025",
             "flag": "sandy_flag.jpeg",
             "username": "sandy",
-            "post_id": 7,
-            "post_image": "sandy_post_image.jpg"
+            "post_id": 13,
+            "post_image": "sandy_post_image.png"
         },
         {
-            "title": "TEST.,SNMZC",
-            "body": "BODY",
-            "country": "mnfsmfb",
-            "category": "Story",
-            "date": "2025-11-12",
-            "flag": "sandy_flag.jpg",
-            "username": "sandy",
-            "post_id": 8,
-            "post_image": "sandy_post_image.jpeg"
-        },
-        {
-            "title": "REAL TITLE",
-            "body": ".AMNFM",
-            "country": "MFDN B",
-            "category": "Tourist Attraction",
-            "date": "2025-11-12",
+            "title": "Koshari",
+            "body": "Koshari is one of Egypt\u2019s most iconic dishes \u2014 a delicious mix of rice, pasta, lentils, chickpeas, and crispy fried onions, topped with a spicy tomato sauce and garlic vinegar.\r\n\r\nIt\u2019s a meal that tells a story of Egypt\u2019s culture \u2014 simple, flavorful, and made for everyone. You can find Koshari everywhere, from small street carts to famous restaurants, bringing people together with every bite! \ud83c\uddea\ud83c\uddec\u2764\ufe0f",
+            "country": "Egypt",
+            "category": "Dish",
+            "date": "Nov 13, 2025",
             "flag": "sandy_flag.jpeg",
             "username": "sandy",
-            "post_id": 10,
-            "post_image": "sandy_post_image.jpg"
-        },
-        {
-            "title": "sfnanb",
-            "body": "masnf",
-            "country": "sabfn",
-            "category": "Tourist Attraction",
-            "date": "2025-11-12",
-            "flag": "sandy_flag.jpeg",
-            "username": "sandy",
-            "post_id": 11,
-            "post_image": "sandy_post_image.jpg"
-        },
-        {
-            "title": "asfnamnb",
-            "body": "msandmb",
-            "country": "msnfb",
-            "category": "Tourist Attraction",
-            "date": "2025-11-12",
-            "flag": "sandy_flag.jpeg",
-            "username": "sandy",
-            "post_id": 12,
-            "post_image": null
+            "post_id": 14,
+            "post_image": "sandy_post_image.webp"
         }
     ]
 }

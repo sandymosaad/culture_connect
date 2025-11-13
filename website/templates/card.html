@@ -1,25 +1,40 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
-<div class="top-card">
-    <h5 class="card-title">{{ post.title}}</h5>
-    <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" class="flag-img" alt="flag-img">
-</div>
-<div class="card-body">
-    <p class="card-text">
-        {{ post.body}}
-    </p>
-    {% if post.post_image %}
-    <img src="{{ url_for('static', filename='uploads/' ~ post.post_image) }}" alt="" >
-    {% endif %}
 
-</div>
-<div class="info">
-    <p><i class="fa fa-user" style="font-size:24px"></i>{{ post.username}}</p>
-    <p>{{ post.category}}</p>
-    <p>{{ post.date}}</p>
-    <div>
-        <button class='btn' onclick="deletePost({{ post.post_id }})"><i class="fa fa-trash-o" style="font-size:36px"></i></button >
-        <button class='btn' onclick="showEditModal('{{ post.post_id }}', '{{ post.title }}', '{{ post.body }}','{{ post.country }}','{{ post.category }}','{{ post.post_image }}','{{ post.flag }}')"
-        ><i class="fa fa-edit" style="font-size:36px"></i> </button >
+<div class="post-card">
+  <div class="post-header">
+    <div class="user-info">
+       
+      <img  src="{{ url_for('static', filename='images/profile.jpg') }}" alt="User Avatar" class="user-avatar">
+      <div>
+        <h4 class="user-name">{{ post.username}}</h4>
+        <span class="post-date">{{ post.date}}</span>
+      </div>
     </div>
-</div>
 
+    <span class="post-category">{{ post.category}}</span>
+  </div>
+
+  <div class="post-image">
+     {% if post.post_image %}
+    <img src="{{ url_for('static', filename='uploads/' ~ post.post_image) }}" alt="post image" >
+    {% endif %}
+  </div>
+
+  <div class="post-body">
+    <h3 class="post-title">{{ post.title}}</h3>
+    <p class="post-text">{{ post.body}}</p>
+  </div>
+
+  <div class="post-footer">
+    <div class="country-info">
+      <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" alt="Country Flag" class="country-flag">
+      <span class="country-name">{{ post.country }}</span>
+    </div>
+
+    <div class="card-actions">
+        <button class='btn' onclick="showEditModal('{{ post.post_id }}', '{{ post.title }}', '{{ post.body }}','{{ post.country }}','{{ post.category }}','{{ post.post_image }}','{{ post.flag }}')"
+        ><i class="fas fa-edit edit-icon" title="Edit" ></i> </button >
+        <button class='btn' onclick="deletePost({{ post.post_id }})"><i class="fas fa-trash delete-icon" title="Delete" ></i></button >
+    </div>
+  </div>
+</div>

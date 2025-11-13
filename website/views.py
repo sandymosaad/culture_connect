@@ -1,6 +1,6 @@
 # Import necessary packages from Flask
 from flask import Blueprint, render_template, session, flash, redirect, url_for, request, current_app
-import datetime  # For handling dates
+import datetime  # For handling dates  
 import os        # For working with files and directories
 from .shared import add_item, get_items,update_posts
 
@@ -135,7 +135,7 @@ def get_post_data():
         category = request.form.get('category')
         flag_file = request.files.get('flag')            # Country flag
         post_image_file = request.files.get('post-img')  # Optional post image
-        date = str(datetime.date.today())  # Today's date string to can story it in json
+        date = datetime.date.today().strftime("%b %d, %Y") # Today's date string to can story it in json
         return {
         "title": title,
         "body": body,
