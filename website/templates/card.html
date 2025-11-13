@@ -1,40 +1,46 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
 
 <div class="post-card">
-  <div class="post-header">
-    <div class="user-info">
-       
-      <img  src="{{ url_for('static', filename='images/profile.jpg') }}" alt="User Avatar" class="user-avatar">
-      <div>
-        <h4 class="user-name">{{ post.username}}</h4>
-        <span class="post-date">{{ post.date}}</span>
-      </div>
+    <div class="post-header">
+        <div class="user-info">
+        
+        <img  src="{{ url_for('static', filename='images/profile.jpg') }}" alt="User Avatar" class="user-avatar">
+        <div>
+            <h4 class="user-name">{{ post.username}}</h4>
+            <span class="post-date">{{ post.date}}</span>
+        </div>
+        </div>
+
+        <span class="post-category">{{ post.category}}</span>
     </div>
 
-    <span class="post-category">{{ post.category}}</span>
-  </div>
-
-  <div class="post-image">
-     {% if post.post_image %}
-    <img src="{{ url_for('static', filename='uploads/' ~ post.post_image) }}" alt="post image" >
-    {% endif %}
-  </div>
-
-  <div class="post-body">
-    <h3 class="post-title">{{ post.title}}</h3>
-    <p class="post-text">{{ post.body}}</p>
-  </div>
-
-  <div class="post-footer">
-    <div class="country-info">
-      <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" alt="Country Flag" class="country-flag">
-      <span class="country-name">{{ post.country }}</span>
+    <div class="post-image">
+        {% if post.post_image %}
+        <img src="{{ url_for('static', filename='uploads/' ~ post.post_image) }}" alt="post image" >
+        {% endif %}
     </div>
+
+    <div class="post-body">
+        <h3 class="post-title">{{ post.title}}</h3>
+        <p class="post-text">{{ post.body}}</p>
+    </div>
+
+    <div class="post-footer">
+        <div class="country-info">
+        <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" alt="Country Flag" class="country-flag">
+        <span class="country-name">{{ post.country }}</span>
+        </div>
+
 
     <div class="card-actions">
-        <button class='btn' onclick="showEditModal('{{ post.post_id }}', '{{ post.title }}', '{{ post.body }}','{{ post.country }}','{{ post.category }}','{{ post.post_image }}','{{ post.flag }}')"
-        ><i class="fas fa-edit edit-icon" title="Edit" ></i> </button >
-        <button class='btn' onclick="deletePost({{ post.post_id }})"><i class="fas fa-trash delete-icon" title="Delete" ></i></button >
+        <button class='btn' 
+            onclick='showEditModal({{ post.post_id }}, {{ post.title|tojson }}, {{ post.body|tojson }}, {{ post.country|tojson }}, {{ post.category|tojson }}, {{ post.post_image|tojson }}, {{ post.flag|tojson }})'>
+            <i class="fas fa-edit edit-icon" title="Edit"></i> 
+        </button>
+        <button class='btn' onclick="deletePost({{ post.post_id }})">
+            <i class="fas fa-trash delete-icon" title="Delete"></i>
+        </button>
     </div>
-  </div>
+
+    </div>
 </div>

@@ -8,7 +8,7 @@ function deletePost(postId) {
             const remainingPosts = document.querySelectorAll('.card[id^="post-"]').length; 
             const statusParagraph = document.querySelector('.checkRemainingPostsPar');
             if (remainingPosts==0){
-                statusParagraph.textContent = "You haven't added any posts yet. Click 'Add a Post' to get started!";
+                statusParagraph.textContent = 'You haven\'t added any posts yet. Click "Add a Post" to create your first one!';
             }}
     })
 };

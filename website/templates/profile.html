@@ -2,24 +2,27 @@
 
 {% block content %}
 
-    <div class="welcome-section"> 
-        <h1 >Welcome {{username}} in Your Profile</h1>
+    <div class="header-section"> 
+        <h1>Welcome, {{username}}!</h1>
         {% if posts %}
-            <p class="checkRemainingPostsPar">Here are your posts:</p>
-            <div class="row cards  g-4">
+            <p class="checkRemainingPostsPar">Here are all your posts:</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">
+                Add a Post
+            </button>
+                <div class="row cards  g-4">
                 {% for post in posts %}
                     <div class="col-12 col-md-3 " id="post-{{ post.post_id }}">
                         {% include "card.html" %}
                     </div>
                 {% endfor %}
-            </div>
+                </div>
         {% else %}
-                    <p class="checkRemainingPostsPar">You haven't added any posts yet. Click "Add a Post" to get started!</p>
+                <p class="checkRemainingPostsPar">You haven't added any posts yet. Click "Add a Post" to create your first one!</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">
+                    Add a Post
+                </button>
         {% endif %}
-        
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">
-        Add a Post
-        </button>
+
     </div>
 
     {#  include new post modal #}

@@ -1,5 +1,5 @@
 {
-    "next_id": 15,
+    "next_id": 16,
     "posts": [
         {
             "title": "The Grand Egyptian Museum",
@@ -22,6 +22,17 @@
             "username": "sandy",
             "post_id": 14,
             "post_image": "sandy_post_image.webp"
+        },
+        {
+            "title": " \u0627\u0644\u0644\u064a \u064a\u0639\u064a\u0634 \u064a\u0627\u0645\u0627 \u064a\u0634\u0648\u0641",
+            "body": "This famous Egyptian saying means 'He who lives, sees a lot.' It reminds us that life is full of unexpected events and experiences, and the more we live, the more we learn. It's a proverb that encourages patience and curiosity about the world around us.",
+            "country": "Egypt",
+            "category": "Quote",
+            "date": "Nov 13, 2025",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "post_id": 15,
+            "post_image": null
         }
     ]
 }
