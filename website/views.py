@@ -39,7 +39,8 @@ class Post:
 # Homepage route
 @views.route('/')
 def index():
-    return render_template('index.html', custom_style="index")
+    return render_template("index.html", custom_style="index", is_home=True)
+
 
 # Profile page route
 @views.route('/profile', methods=['POST', 'GET'])

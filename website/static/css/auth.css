@@ -19,7 +19,3 @@ form:hover {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-form h1 {
-    margin-bottom: 20px;
-    color: #333;
-}

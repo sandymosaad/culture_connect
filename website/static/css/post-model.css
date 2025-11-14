@@ -15,17 +15,7 @@
 }
 
 /* Styling for form inputs in style.css */
-.form-group textarea {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #bbb;
-    font-size: 16px;
-    box-sizing: border-box;
-}
 
-.form-group input[type="file"] {
-  padding: 6px;
-}
 #show-edit-flag-img,
 #show-edit-post-img {
     display: block;
@@ -35,11 +25,5 @@
     border-radius: 8px;
     margin: 8px 0;
     border: 1px solid #ddd;
-}
-
-
-.form-group:focus-within label {
-  color: #2f6dd9;
-  font-weight: 600;
 }
 

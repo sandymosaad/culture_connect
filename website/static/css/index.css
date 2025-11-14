@@ -1,15 +1,24 @@
+
+.home-page .main-navbar a {
+    color: white !important;
+}
+
+.home-page .main-navbar a:hover {
+    color:#4c8bf5 !important;
+}
+
 .hero-content {
     color: white;
 }
 
 .hero-content h1 {
     margin: 0;
-    font-size: 3rem;
+    font-size: 48px;
     font-weight: 700;
 }
 
 .hero-content p {
-    font-size: 1.3rem;
+    font-size: 20px;
     margin-top: 10px;
     margin-bottom: 25px;
 }

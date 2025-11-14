@@ -2,40 +2,74 @@ body {
     margin: 0;
     font-family: "Poppins", sans-serif;
 }
-.navbar{
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/* Navbar Container */
+
+.main-navbar {
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 3%;
-    background-color: #fcfafa;
+    height: 70px;
+    background-color: transparent;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    
 }
 
-.navbar-brand img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-.navbar .container-fluid{
+.nav-container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 30px;
+    height: 100%;
     display: flex;
-    justify-content:space-around;
     align-items: center;
+    justify-content: space-between;
 }
- .navbar-nav{
+
+.nav-logo {
+    font-size: 26px;
+    font-weight: 600;
+    color: #2f6dd9;
     display: flex;
-    justify-content: center;
-    text-align: center;
+    align-items: center;
+    gap: 6px;
 }
-.navbar-nav .nav-item{
-    padding: 0 10px ;
+.nav-logo a{
+    text-decoration: none;
+
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
     list-style: none;
-    text-decoration: underline;
+    margin: 0;
 }
-.navbar-nav li a{
-    text-decoration: underline;
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #2f6dd9;
+    transition: 0.3s;
+    margin-left: 15px;
+    font-weight: 500;
 }
+
+.nav-links a:hover {
+    color:#4c8bf5;
+    
+}
+
+
+
 
 /* --------------------------------------------------------- Background image ---------------------------------------------- */
 .img-background {
     width: 100vw;
     height: 100vh;
+
     background-image: url("/static/images/world-map.jpg");
     background-size: cover;
     background-position: center;
@@ -195,4 +229,21 @@ body {
 
 .form-link a:hover {
     text-decoration: underline;
+}
+
+.form-group:focus-within label {
+  color: #2f6dd9;
+  font-weight: 600;
+}
+
+.form-group textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="file"] {
+  padding: 6px;
 }
