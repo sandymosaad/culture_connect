@@ -36,10 +36,13 @@ class Post:
 
         }
 
+
 # Homepage route
 @views.route('/')
 def index():
-    return render_template("index.html", custom_style="index", has_diff_navbar_style=True)
+    # Get the username from the session
+    username = session.get('username')
+    return render_template("index.html", custom_style="index", has_diff_navbar_style=True , username = username)
 
 
 # Profile page route
@@ -187,11 +190,12 @@ def edit_post(post_id):
 
 @views.route('/global')
 def global_posts():
+    username = session.get('username')
     data = get_items("posts")   
     all_posts = data["posts"]
     countries_name= get_countries_name(all_posts)
 
-    return render_template('global_posts.html', custom_style="global", posts=all_posts, countries_name = countries_name)
+    return render_template('global_posts.html', custom_style="global", posts=all_posts, countries_name = countries_name , username = username)
 
 def get_countries_name(posts):
     countries_name=[]

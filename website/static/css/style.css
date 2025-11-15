@@ -154,9 +154,8 @@ body {
 
 .section-alert {
     position: fixed;
-    top: 20px;        
-    left: 50%;
-    transform: translateX(-50%);
+    top: 70px;        
+    right: 0%;
     z-index: 9999; 
     width: 90%;       
     max-width: 500px; 

@@ -38,6 +38,10 @@ def login():
 #######################
 @auth.route('/logout')
 def logout():
+    username = session.get('username')
+    if(username):
+        session.pop('username')
+        flash('Logged out successfully!', category='success')
     return redirect(url_for('auth.login'))
 
 #######################
@@ -56,7 +60,7 @@ def sign_up():
         new_user = {
             "id": id,
             "username": username,
-             "email": email,
+            "email": email,
             "password": password
         }
         add_item(new_user,'users')

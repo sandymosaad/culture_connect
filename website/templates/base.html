@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         {% if custom_style %}
             <link rel="stylesheet" href="{{ url_for('static', filename='css/' ~ custom_style ~ '.css') }}">
@@ -42,8 +41,13 @@
             <ul class="nav-links">
                 <li><a href="/global">Global</a></li>
                 <li><a href="/profile">Profile</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/logout">Logout</a></li>
+                {% if not username %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/sign-up">Sign Up</a></li>
+                {% else %}
+                    <li><a href="/logout">Logout</a></li>
+                {% endif %}
+
             </ul>
         </div>
     </nav>
