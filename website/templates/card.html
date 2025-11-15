@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
 
 <div class="post-card">
     <div class="post-header">
@@ -31,16 +30,16 @@
         <span class="country-name">{{ post.country }}</span>
         </div>
 
-
-    <div class="card-actions">
-        <button class='btn' 
-            onclick='showEditModal({{ post.post_id }}, {{ post.title|tojson }}, {{ post.body|tojson }}, {{ post.country|tojson }}, {{ post.category|tojson }}, {{ post.post_image|tojson }}, {{ post.flag|tojson }})'>
-            <i class="fas fa-edit edit-icon" title="Edit"></i> 
-        </button>
-        <button class='btn' onclick="deletePost({{ post.post_id }})">
-            <i class="fas fa-trash delete-icon" title="Delete"></i>
-        </button>
-    </div>
-
+    {% if show_controls%}
+        <div class="card-actions">
+            <button class='btn' 
+                onclick='showEditModal({{ post.post_id }}, {{ post.title|tojson }}, {{ post.body|tojson }}, {{ post.country|tojson }}, {{ post.category|tojson }}, {{ post.post_image|tojson }}, {{ post.flag|tojson }})'>
+                <i class="fas fa-edit edit-icon" title="Edit"></i> 
+            </button>
+            <button class='btn' onclick="deletePost({{ post.post_id }})">
+                <i class="fas fa-trash delete-icon" title="Delete"></i>
+            </button>
+        </div>
+    {% endif %}
     </div>
 </div>

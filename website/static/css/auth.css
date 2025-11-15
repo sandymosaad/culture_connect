@@ -1,3 +1,13 @@
+/*diffrent style for navbar*/
+.home-page .main-navbar a {
+    color: white !important;
+}
+
+.home-page .main-navbar a:hover {
+    color:#4c8bf5 !important;
+}
+
+
 /*form*/
 form{
     background-color: white;

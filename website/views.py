@@ -39,7 +39,7 @@ class Post:
 # Homepage route
 @views.route('/')
 def index():
-    return render_template("index.html", custom_style="index", is_home=True)
+    return render_template("index.html", custom_style="index", has_diff_navbar_style=True)
 
 
 # Profile page route

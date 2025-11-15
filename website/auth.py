@@ -31,7 +31,7 @@ def login():
         else:
             flash(f'User not found ', category='error')
 
-    return render_template('login.html', custom_style='auth')
+    return render_template('login.html', custom_style='auth', has_diff_navbar_style=True)
 
 #######################
 # logout
@@ -62,4 +62,4 @@ def sign_up():
         add_item(new_user,'users')
         return redirect(url_for('auth.login'))
 
-    return render_template('signup.html', custom_style='auth')
+    return render_template('signup.html', custom_style='auth', has_diff_navbar_style=True)
