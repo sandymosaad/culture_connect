@@ -44,17 +44,6 @@
             "username": "sandy",
             "post_id": 16,
             "post_image": "sandy_post_image.png"
-        },
-        {
-            "title": "test postvfbggs",
-            "body": "test bodddddddddddddy",
-            "country": "test country",
-            "category": "proverb",
-            "date": "Nov 14, 2025",
-            "flag": "test_flag.webp",
-            "username": "test",
-            "post_id": 18,
-            "post_image": "test_post_image.png"
         }
     ]
 }

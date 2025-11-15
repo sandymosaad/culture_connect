@@ -103,3 +103,20 @@
 .card-actions i:hover {
     color: #2f6dd9;
 }
+/* ---------------------------------favorite-icon -----------------------*/
+.favorite-icon .fav-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.heart-icon {
+    font-size: 24px;
+    color: rgba(0,0,0,0.25); 
+    transition: 0.3s;
+}
+
+.heart-icon.active {
+    color: red; 
+}

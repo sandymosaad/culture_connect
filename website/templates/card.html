@@ -40,6 +40,15 @@
                 <i class="fas fa-trash delete-icon" title="Delete"></i>
             </button>
         </div>
+    {% else %} 
+        <div class="favorite-icon">
+            <button class="fav-btn" onclick="addPostToFavorite({{ post.post_id }})" >
+                <i class="fas fa-heart heart-icon" id='favorite-{{ post.post_id }}'></i>
+            </button>
+        </div>
+
     {% endif %}
+
     </div>
 </div>
+
