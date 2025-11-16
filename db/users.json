@@ -1,26 +1,62 @@
-[
-    {
-        "id": 1,
-        "username": "SOSO",
-        "email": "SOSO@JJ",
-        "password": "SKDJ"
-    },
-    {
-        "id": 2,
-        "username": "test",
-        "email": "test@gmail.com",
-        "password": "1234"
-    },
-    {
-        "id": 3,
-        "username": "sandy",
-        "email": "sandy@gmail.com",
-        "password": "1234"
-    },
-    {
-        "id": 4,
-        "username": "sandy",
-        "email": "sandy5@gmail",
-        "password": "1234"
-    }
-]
+{
+    "next_id": 10,
+    "users": [
+        {
+            "id": 1,
+            "username": "SOSO",
+            "email": "SOSO@JJ",
+            "password": "SKDJ"
+        },
+        {
+            "id": 2,
+            "username": "test",
+            "email": "test@gmail.com",
+            "password": "1234"
+        },
+        {
+            "id": 3,
+            "username": "sandy",
+            "email": "sandy@gmail.com",
+            "password": "1234"
+        },
+        {
+            "id": 4,
+            "username": "sandy",
+            "email": "sandy5@gmail",
+            "password": "1234"
+        },
+        {
+            "id": 3,
+            "username": "sad",
+            "email": "sf@asfd",
+            "password": "sad",
+            "post_id": 5
+        },
+        {
+            "id": 3,
+            "username": "sady",
+            "email": "sandymosaad24@gmail.com",
+            "password": "12345678",
+            "post_id": 6
+        },
+        {
+            "id": 3,
+            "username": "sandy",
+            "email": "soao@gmail.com",
+            "password": "12345678",
+            "post_id": 7
+        },
+        {
+            "username": "soso",
+            "email": "SOSO@gmail.com",
+            "password": "12345678",
+            "id": 8
+        },
+        {
+            "username": "dfs",
+            "email": "dsfs@gmail.com",
+            "password": "12345678",
+            "id": 9
+        }
+    ]
+}

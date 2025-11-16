@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, session, flash, redirect, url_for,
 import datetime  # For handling dates  
 import os        # For working with files and directories
 from .shared import add_item, get_items,update_posts
+import re 
 
 # Define a Blueprint to organize routes
 views = Blueprint('views', __name__)
@@ -140,6 +141,7 @@ def get_post_data():
         flag_file = request.files.get('flag')            # Country flag
         post_image_file = request.files.get('post-img')  # Optional post image
         date = datetime.date.today().strftime("%b %d, %Y") # Today's date string to can story it in json
+        
         return {
         "title": title,
         "body": body,
@@ -149,6 +151,7 @@ def get_post_data():
         "flag_file": flag_file,
         "post_image_file": post_image_file
         }
+
 
 @views.route("/delete/<int:post_id>", methods=["POST"])
 def delete_post(post_id):

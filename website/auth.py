@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request , flash
 from os import path
 import json
 from .shared import add_item, get_items
+import re
 auth = Blueprint('auth', __name__)
 
 #######################
@@ -53,12 +54,16 @@ def sign_up():
         username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
-        if len(get_items('users')) == 0:
-            id=1
-        else:
-            id=len(get_items('users')) + 1
+        response = valid_sign_up_data(username, email, password)
+        if response:
+            return response
+
+        # if len(get_items('users')) == 0:
+        #     id=1
+        # else:
+        #     id=len(get_items('users')) + 1
         new_user = {
-            "id": id,
+            
             "username": username,
             "email": email,
             "password": password
@@ -66,4 +71,24 @@ def sign_up():
         add_item(new_user,'users')
         return redirect(url_for('auth.login'))
 
-    return render_template('signup.html', custom_style='auth', has_diff_navbar_style=True)
+    return render_template('signup.html', custom_style='auth', has_diff_navbar_style=True,  errors={})
+
+def valid_sign_up_data(username, email, password):
+    pattern_username = r'^[a-zA-Z]{3,}[_\0-9]*[a-zA-Z0-9]?$'
+    pattern_email =r'^[a-zA-Z]+[a-zA-Z0-9_-]*@(gmail|yahoo|outlook)\.com$'
+    pattern_password = r'^[a-zA-Z0-9_\- @#]{8,}$'
+    errors ={}
+   
+    if not re.match(pattern_username, username):
+        errors["username_error"] = "Username must be at least 3 characters and contain only letters, numbers or _ ."
+
+    if not re.match(pattern_email, email):
+        errors["email_error"] = "Email must be valid, e.g., username@gmail.com."
+
+    if not re.match(pattern_password, password):
+        errors["password_error"] = "Password must be at least 8 characters."
+
+    if errors:
+        return render_template("signup.html", custom_style='auth', username=username, email=email,password=password, has_diff_navbar_style=True, errors=errors) 
+    
+    return None
