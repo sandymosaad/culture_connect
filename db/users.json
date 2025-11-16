@@ -1,5 +1,5 @@
 {
-    "next_id": 10,
+    "next_id": 12,
     "users": [
         {
             "id": 1,
@@ -57,6 +57,18 @@
             "email": "dsfs@gmail.com",
             "password": "12345678",
             "id": 9
+        },
+        {
+            "username": "dfs",
+            "email": "dsfs@gmail.com",
+            "password": "12345678",
+            "id": 10
+        },
+        {
+            "username": "sandys",
+            "email": "sandys@gmail.com",
+            "password": "12345678",
+            "id": 11
         }
     ]
 }

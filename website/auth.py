@@ -15,7 +15,9 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
     
-        users = get_items('users')
+        data = get_items('users')
+        users =data['users']
+        #users = get_items('users')
         user_found = None
         for user in users:
             if user['username'] == username:
@@ -51,22 +53,35 @@ def logout():
 @auth.route('/sign-up', methods=['POST', 'GET'])
 def sign_up():
     if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
-        response = valid_sign_up_data(username, email, password)
+        username_input = request.form.get('username')
+        email_input= request.form.get('email')
+        password_input = request.form.get('password')
+        response = valid_sign_up_data(username_input, email_input, password_input)
         if response:
             return response
 
-        # if len(get_items('users')) == 0:
-        #     id=1
-        # else:
-        #     id=len(get_items('users')) + 1
+        users_data = get_usernames_and_emails()
+        if username_input in users_data['usernames']:
+            flash(f'Username "{username_input}" already exists', category='error')
+            return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
+        
+        if email_input in users_data['emails']:
+            flash('Email already exists', category='error')
+            return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
+        # usersname_emails=get_usersname_and_emails()
+        # for username in usersname_emails['usersname']:
+        #     if username_input == username:
+        #         flash(f'Username {username} {username_input} already found', category='error')
+        #         return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
+        # for email in usersname_emails['emails']:
+        #     if email_input ==email:
+        #         flash('Email already found', category='error')
+        #         return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
+                
         new_user = {
-            
-            "username": username,
-            "email": email,
-            "password": password
+            "username": username_input,
+            "email": email_input,
+            "password": password_input
         }
         add_item(new_user,'users')
         return redirect(url_for('auth.login'))
@@ -92,3 +107,29 @@ def valid_sign_up_data(username, email, password):
         return render_template("signup.html", custom_style='auth', username=username, email=email,password=password, has_diff_navbar_style=True, errors=errors) 
     
     return None
+
+# def get_usersname_and_emails():
+#     data = get_items('users')
+#     users =data['users']
+#     usersname = []
+#     emails = []
+#     for user in users:
+#         usersname.append(user['username'])
+#         emails.append(user['email'])
+#     data ={
+#         "usersname":usersname,
+#         'emails' : emails
+#     }
+#     return(data)
+
+def get_usernames_and_emails():
+    data = get_items('users')
+    users = data.get('users', [])
+
+    usernames = [user['username'] for user in users]
+    emails = [user['email'] for user in users]
+
+    return {
+        "usernames": usernames,
+        "emails": emails
+    }
