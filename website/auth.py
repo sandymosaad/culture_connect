@@ -68,16 +68,7 @@ def sign_up():
         if email_input in users_data['emails']:
             flash('Email already exists', category='error')
             return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
-        # usersname_emails=get_usersname_and_emails()
-        # for username in usersname_emails['usersname']:
-        #     if username_input == username:
-        #         flash(f'Username {username} {username_input} already found', category='error')
-        #         return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
-        # for email in usersname_emails['emails']:
-        #     if email_input ==email:
-        #         flash('Email already found', category='error')
-        #         return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
-                
+            
         new_user = {
             "username": username_input,
             "email": email_input,
@@ -108,20 +99,6 @@ def valid_sign_up_data(username, email, password):
     
     return None
 
-# def get_usersname_and_emails():
-#     data = get_items('users')
-#     users =data['users']
-#     usersname = []
-#     emails = []
-#     for user in users:
-#         usersname.append(user['username'])
-#         emails.append(user['email'])
-#     data ={
-#         "usersname":usersname,
-#         'emails' : emails
-#     }
-#     return(data)
-
 def get_usernames_and_emails():
     data = get_items('users')
     users = data.get('users', [])
@@ -133,3 +110,4 @@ def get_usernames_and_emails():
         "usernames": usernames,
         "emails": emails
     }
+    

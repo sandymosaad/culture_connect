@@ -33,17 +33,17 @@
     {% if show_controls%}
         <div class="card-actions">
             <button class='btn' 
-                onclick='showEditModal({{ post.post_id }}, {{ post.title|tojson }}, {{ post.body|tojson }}, {{ post.country|tojson }}, {{ post.category|tojson }}, {{ post.post_image|tojson }}, {{ post.flag|tojson }})'>
+                onclick='showEditModal({{ post.id }}, {{ post.title|tojson }}, {{ post.body|tojson }}, {{ post.country|tojson }}, {{ post.category|tojson }}, {{ post.post_image|tojson }}, {{ post.flag|tojson }})'>
                 <i class="fas fa-edit edit-icon" title="Edit"></i> 
             </button>
-            <button class='btn' onclick="deletePost({{ post.post_id }})">
+            <button class='btn' onclick="deletePost({{ post.id }})">
                 <i class="fas fa-trash delete-icon" title="Delete"></i>
             </button>
         </div>
     {% else %} 
         <div class="favorite-icon">
-            <button class="fav-btn" onclick="addPostToFavorite({{ post.post_id }})" >
-                <i class="fas fa-heart heart-icon" id='favorite-{{ post.post_id }}'></i>
+            <button class="fav-btn" onclick="addPostToFavorite({{ post.id }})" >
+                <i class="fas fa-heart heart-icon" id='favorite-{{ post.id }}'></i>
             </button>
         </div>
 

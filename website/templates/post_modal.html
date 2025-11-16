@@ -1,6 +1,5 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/post-model.css') }}">
-
-<div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+<div class="modal fade {% if show_modal %}show{% endif %}" id="{{ modal_id }}" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -25,20 +24,29 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="{{ prefix }}title">Title of post</label>
-                                <input type="text" name="title" id="{{ prefix }}title" class="form-control"  placeholder="Enter the title of post"  required>
+                                <input type="text" name="title" id="{{ prefix }}title"  value='{{ form_data.title or '' }}' class="form-control"  placeholder="Enter the title of post"  required>
+                                {% if errors.title_error%}
+                                    <p style='color: red'>{{errors.title_error}} </p>
+                                {% endif  %} 
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="{{ prefix }}country">Country</label>
-                                <input type="text" name="country" id="{{ prefix }}country" class="form-control"  placeholder="Enter your country name" required>
+                                <input type="text" name="country" id="{{ prefix }}country" value='{{ form_data.country or '' }}' class="form-control"  placeholder="Enter your country name" required>
+                                {% if errors.country_error%}
+                                    <p style='color: red'>{{errors.country_error}} </p>
+                                {% endif  %} 
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="{{ prefix }}body">Body of post</label>
-                        <textarea name="body" id="{{ prefix }}body" class="form-control" placeholder="Write something interesting..." required></textarea>
+                        <textarea name="body" id="{{ prefix }}body"  class="form-control" placeholder="Write something interesting..." required>{{ form_data.body or '' }}</textarea>
+                        {% if errors.body_error%}
+                                    <p style='color: red'>{{errors.body_error}} </p>
+                        {% endif  %} 
                     </div>
                     
                     <div class="row">

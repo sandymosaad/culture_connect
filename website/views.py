@@ -32,7 +32,7 @@ class Post:
             "date": str(self.date),
             "flag": self.flag,
             "username": self.username,
-            "post_id" : self.id,
+            "id" : self.id,
             "post_image": self.post_image,
 
         }
@@ -49,64 +49,45 @@ def index():
 # Profile page route
 @views.route('/profile', methods=['POST', 'GET'])
 def profile():
-    # Get the username from the session
     username = session.get('username')
-    
-    # If the user is not logged in, redirect to login
     if not username:
         flash('Please log in first', category='error')
         return redirect(url_for('auth.login'))
-    
-    # Handle POST request when creating a new post
-    if request.method == 'POST':
-        # Get form data
-        post_data = get_post_data()
-        # Save the flag image and get the new filename
-        new_name_flag = save_image(post_data['flag_file'], 'flag', username)
-        
-        
-        # Save post image if provided
-        if post_data['post_image_file']:
-            new_name_post_image = save_image(post_data['post_image_file'], 'post_image', username)
-            # Create a new Post object with the post image
-            new_post = Post(
-                post_data['title'],
-                post_data['body'],
-                post_data['country'],
-                post_data['category'],
-                post_data['date'],
-                new_name_flag,
-                username,
-                id =None,
-                post_image= new_name_post_image
-                
-                )
-        else:
-            # Create a new Post object without a post image
-            new_post = Post(
-                post_data['title'],
-                post_data['body'],
-                post_data['country'],
-                post_data['category'],
-                post_data['date'],
-                new_name_flag,
-                username,
-                id =None,
-                )
-        
-        # Convert the post to a dictionary to pass to the template
-        post_dict = new_post.to_dict()
-            
-        add_item(post_dict, 'posts')
-        user_posts = get_user_posts(username)
 
-        #return render_template('profile.html', custom_style="profile", username = username ,posts = user_posts)
-        return redirect(url_for('views.profile'))
-    
     user_posts = get_user_posts(username)
-    # Render the profile page for GET requests
-    return render_template('profile.html', custom_style="profile", username = username ,posts = user_posts)
+    errors = {}
+    show_modal = False  
 
+    if request.method == 'POST':
+        
+        post_data = get_post_data()
+        errors = valid_post_data(post_data['title'], post_data['body'], post_data['country'])
+
+        if errors:
+            show_modal = True  
+        else:
+            # Save flag image
+            new_name_flag = save_image(post_data['flag_file'], 'flag', username)
+
+            # Save post image if exists
+            post_image_name = save_image(post_data['post_image_file'], 'post_image', username) if post_data['post_image_file'] else None
+
+            new_post = Post(
+                title=post_data['title'],
+                body=post_data['body'],
+                country=post_data['country'],
+                category=post_data['category'],
+                date=post_data['date'],
+                flag=new_name_flag,
+                username=username,
+                id = None,
+                post_image=post_image_name
+            )
+            add_item(new_post.to_dict(), 'posts')
+            return redirect(url_for('views.profile'))
+
+    return render_template('profile.html', custom_style="profile", username=username, posts=user_posts, errors=errors, show_modal=show_modal, form_data=request.form if errors else {}
+    )
 
 # get all posts for the current user
 def get_user_posts(username):
@@ -153,11 +134,11 @@ def get_post_data():
         }
 
 
-@views.route("/delete/<int:post_id>", methods=["POST"])
-def delete_post(post_id):
+@views.route("/delete/<int:id>", methods=["POST"])
+def delete_post(id):
     try:
         posts = get_items('posts')
-        posts = [p for p in posts['posts'] if int(p["post_id"]) != int(post_id)]
+        posts = [p for p in posts['posts'] if int(p["id"]) != int(id)]
         update_posts('posts',posts)
         return {"success": True}
     except Exception as e:
@@ -165,13 +146,15 @@ def delete_post(post_id):
         return {"success": False, "error": str(e)}, 500 
     
 
-@views.route('/edit/<int:post_id>', methods=['POST'])
-def edit_post(post_id):
+@views.route('/edit/<int:id>', methods=['POST'])
+def edit_post(id):
     data = get_items("posts")   
     posts = data["posts"]
     try:
         for post in posts:
-            if int(post["post_id"]) == int(post_id):
+            # if "id" not in post:
+            #     print("POST WITHOUT ID:", post)
+            if "id" in post and int(post["id"]) == int(id):
                 post["title"] = request.form.get("title")
                 post["body"] = request.form.get("body")
                 post["country"] = request.form.get("country")
@@ -206,3 +189,25 @@ def get_countries_name(posts):
         if post['country'] not in countries_name:
             countries_name.append(post['country'])
     return countries_name
+
+
+def valid_post_data(title, body, country):
+    pattern_post_title = r'^[\u0600-\u06FFa-zA-Z0-9][\u0600-\u06FFa-zA-Z0-9\s\-\_,\.]{2,}$'
+    pattern_post_body = r'^.{30,}$'
+    pattern_post_country = r'^[\u0600-\u06FFa-zA-Z\s]{3,}$'
+
+    errors = {}
+
+    if not re.match(pattern_post_title, title):
+        errors['title_error'] = "Title must be at least 3 characters and can include Arabic/English letters, numbers, spaces, and basic symbols."
+
+    if not re.match(pattern_post_body, body):
+        errors['body_error'] = "Body must be at least 30 characters."
+
+    if not re.match(pattern_post_country, country):
+        errors['country_error'] = "Country name must be at least 3 letters and contain only Arabic/English letters and spaces."
+
+    # if errors:
+    #     return render_template('post_modal.html', custom_style="profile", username = username, posts = user_posts, title = title, body = body, country = country, has_diff_navbar_style = True, errors = errors)
+    # return None
+    return errors

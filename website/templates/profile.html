@@ -11,7 +11,7 @@
             </button>
                 <div class="row cards  g-4">
                 {% for post in posts %}
-                    <div class="col-12 col-md-4 " id="post-{{ post.post_id }}" >
+                    <div class="col-12 col-md-4 " id="post-{{ post.id }}" >
                         {% set show_controls = True%}
                         {% include "card.html" %}
                     </div>
@@ -37,4 +37,13 @@
     {% set modal_title = "Edit Post" %}
     {% set is_edit = True %}
     {% include "post_modal.html" %}
+
+<script>
+    {% if show_modal %}
+        var myModal = new bootstrap.Modal(document.getElementById('postModal'));
+        myModal.show();
+    {% endif %}
+</script>
+
 {% endblock %}
+

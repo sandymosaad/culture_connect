@@ -62,7 +62,7 @@ function submitEdit(){
     const formData = new FormData();
         formData.append('title', postTitle);
         formData.append('body', postBody);
-        formData.append('post_id', postId);
+        formData.append('id', postId);
         formData.append('country', country);
         formData.append('category', category);
         if (postImage) {

@@ -1,5 +1,5 @@
 {
-    "next_id": 19,
+    "next_id": 25,
     "posts": [
         {
             "title": "The Grand Egyptian Museum",
@@ -9,7 +9,7 @@
             "date": "Nov 13, 2025",
             "flag": "sandy_flag.jpeg",
             "username": "sandy",
-            "post_id": 13,
+            "id": 13,
             "post_image": "sandy_post_image.png"
         },
         {
@@ -20,7 +20,7 @@
             "date": "Nov 13, 2025",
             "flag": "sandy_flag.jpeg",
             "username": "sandy",
-            "post_id": 14,
+            "id": 14,
             "post_image": "sandy_post_image.webp"
         },
         {
@@ -31,7 +31,7 @@
             "date": "Nov 13, 2025",
             "flag": "sandy_flag.jpeg",
             "username": "sandy",
-            "post_id": 15,
+            "id": 15,
             "post_image": null
         },
         {
@@ -42,8 +42,63 @@
             "date": "Nov 13, 2025",
             "flag": "sandy_flag.webp",
             "username": "sandy",
-            "post_id": 16,
+            "id": 16,
             "post_image": "sandy_post_image.png"
+        },
+        {
+            "title": "s",
+            "body": "ds",
+            "country": "s",
+            "category": "Tourist Attraction",
+            "date": "Nov 16, 2025",
+            "flag": "test_flag.webp",
+            "username": "test",
+            "post_image": "test_post_image.webp",
+            "id": 19
+        },
+        {
+            "title": "ff",
+            "body": "s",
+            "country": "s",
+            "category": "Story",
+            "date": "Nov 16, 2025",
+            "flag": "test_flag.webp",
+            "username": "test",
+            "post_image": "test_post_image.webp",
+            "id": 20
+        },
+        {
+            "title": "test ",
+            "body": "test bodybdsanv bkj hdsv   kljsfnn  mkcnbu wedn cstest bodybdsanv bkj hdsv   kljsfnn  mkcnbu wedn cstest bodybdsanv bkj hdsv   kljsfnn  mkcnbu wedn cs",
+            "country": "Egypt",
+            "category": "Story",
+            "date": "Nov 16, 2025",
+            "flag": "test_flag.webp",
+            "username": "test",
+            "post_image": "test_post_image.webp",
+            "id": 21
+        },
+        {
+            "title": "test ",
+            "body": "testbodytestbodytestbodytestbodytestbody\r\ntestbodytestbodytestbodytestbodytestbodyt\r\nestbodytestbodytestbodytestbodytestbodyte\r\nstbodytestbodytestbody",
+            "country": "test country",
+            "category": "Tourist Attraction",
+            "date": "Nov 16, 2025",
+            "flag": "test_flag.webp",
+            "username": "test",
+            "id": 23,
+            "post_image": "test_post_image.webp"
+        },
+        {
+            "title": "test",
+            "body": "testbody testbody testbody testbody testbody testbody testbody testbody testbody testbody testbody testbody testbody ",
+            "country": "test ",
+            "category": "Tourist Attraction",
+            "date": "Nov 16, 2025",
+            "flag": "test_flag.webp",
+            "username": "test",
+            "id": 24,
+            "post_image": null
         }
     ]
 }
