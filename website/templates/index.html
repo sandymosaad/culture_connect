@@ -9,10 +9,12 @@
         <h1>Welcome to Culture Connect</h1>
         <p>Explore Cultures From All Around the World</p>
 
-        <div class="hero-actions">
-            <a href="/login" class="btn btn-light">Login</a>
-            <a href="/sign-up" class="btn btn-primary">Sign Up</a>
-        </div>
+        {% if not username%}
+            <div class="hero-actions">
+                <a href="/login" class="btn btn-light">Login</a>
+                <a href="/sign-up" class="btn btn-primary">Sign Up</a>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
