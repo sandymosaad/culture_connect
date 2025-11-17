@@ -80,7 +80,7 @@ def sign_up():
     return render_template('signup.html', custom_style='auth', has_diff_navbar_style=True,  errors={})
 
 def valid_sign_up_data(username, email, password):
-    pattern_username = r'^[a-zA-Z]{3,}[_\0-9]*[a-zA-Z0-9]?$'
+    pattern_username = r'^[a-zA-Z]{3,}[a-zA-Z0-9_]*$'
     pattern_email =r'^[a-zA-Z]+[a-zA-Z0-9_-]*@(gmail|yahoo|outlook)\.com$'
     pattern_password = r'^[a-zA-Z0-9_\- @#]{8,}$'
     errors ={}

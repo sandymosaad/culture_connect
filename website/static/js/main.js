@@ -1,5 +1,3 @@
-const { createElement } = require("react");
-
 function deletePost(postId) {
     fetch(`/delete/${postId}`, {method: "POST"})
     .then(res => res.json())
