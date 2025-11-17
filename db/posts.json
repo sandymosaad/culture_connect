@@ -1,5 +1,5 @@
 {
-    "next_id": 3,
+    "next_id": 10,
     "posts": [
         {
             "title": "The Grand Egyptian Museum",
@@ -24,6 +24,54 @@
             "id": 2,
             "user_profile_img": "sandy_profile.jpg",
             "post_image": "sandy_post_image.webp"
+        },
+        {
+            "title": "test post",
+            "body": " test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body ",
+            "country": "test country",
+            "category": "Tourist Attraction",
+            "date": "Nov 17, 2025",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "id": 3,
+            "user_profile_img": "sandy_profile.jpg",
+            "post_image": null
+        },
+        {
+            "title": "TEST",
+            "body": "TEATESESXGF IDSHDJ OLJSLFKCM P SKDL TEATESESXGF IDSHDJ OLJSLFKCM P SKDL TEATESESXGF IDSHDJ OLJSLFKCM P SKDL ",
+            "country": "test country",
+            "category": "Tourist Attraction",
+            "date": "Nov 17, 2025",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "id": 4,
+            "user_profile_img": "sandy_profile.jpg",
+            "post_image": null
+        },
+        {
+            "title": "TESDTTSD",
+            "body": "REDSCFSG ILKHS DN  VREDSCFSG ILKHS DN REDSCFSG ILKHS DN REDSCFSG ILKHS DN REDSCFSG ILKHS DN REDSCFSG ILKHS DN ",
+            "country": "TTSADGF",
+            "category": "Dish",
+            "date": "Nov 17, 2025",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "id": 5,
+            "user_profile_img": "sandy_profile.jpg",
+            "post_image": null
+        },
+        {
+            "title": "safdav",
+            "body": "kshbjgfv oljdncbnsp;j sdjnkmkshbjgfv oljdncbnsp;j sdjnkm",
+            "country": "jkdgvsahv",
+            "category": "Tourist Attraction",
+            "date": "Nov 17, 2025",
+            "flag": "sandy_flag.jpeg",
+            "username": "sandy",
+            "id": 6,
+            "user_profile_img": "sandy_profile.jpg",
+            "post_image": null
         }
     ]
 }

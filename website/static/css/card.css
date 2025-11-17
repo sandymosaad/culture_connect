@@ -6,15 +6,19 @@
 }
 
 .post-card {
-    width: 380px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     font-family: 'Arial', sans-serif;
     margin: 20px;
-    max-height: 670px;
-    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: normal;
+    word-wrap: break-word;
 }
+
 .post-card:hover{
     transform: scale(1.02);
     transition: 0.3s;
@@ -26,8 +30,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
-}
 
+}
+.post-footer {
+    margin-top: auto;
+}
 .user-info {
     display: flex;
     align-items: center;
@@ -55,7 +62,9 @@
 }
 
 .post-body {
-    padding: 15px;
+    padding:  15px ;
+    margin-top: auto;   
+
 }
 
 .post-title {
@@ -63,6 +72,7 @@
     margin-bottom: 5px;
     color: #333;
     text-align: center;
+    
 }
 
 .post-text {

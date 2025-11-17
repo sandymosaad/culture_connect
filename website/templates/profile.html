@@ -10,9 +10,9 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">
                 Add a Post
             </button>
-                <div class="row cards  g-4">
+                <div class="row cards  g-4 d-flex align-items-stretch">
                 {% for post in posts %}
-                    <div class="col-12 col-md-4 " id="post-{{ post.id }}" >
+                    <div class="col-12 col-md-4 d-flex " id="post-{{ post.id }}" >
                         {% set show_controls = True%}
                         {% include "card.html" %}
                     </div>

@@ -35,13 +35,14 @@ function showEditModal(currentPostId,currentTitle, currentBody,currentCountry,cu
     }
 
     let imageLabel = document.getElementById('edit-image-label');
-    if (currentImage !='None') {
-    postImage.src = `${uploadsPath}${currentImage}`;
-    postImage.style.display = 'block';   // show image
-    console.log(postImage.src);
+    if (currentImage !=null) {
+        imageLabel.textContent = "Do you want to change image?";
+        postImage.src = `${uploadsPath}${currentImage}`;
+        postImage.style.display = 'block';   // show image
+        console.log(postImage.src);
     } else {
-    postImage.style.display = 'none';    // hide image
-    imageLabel.textContent = "Do you want to upload image?";
+        postImage.style.display = 'none';    // hide image
+        imageLabel.textContent = "Do you want to upload image?";
     }
     $("#editPostModal").modal('show')
 
