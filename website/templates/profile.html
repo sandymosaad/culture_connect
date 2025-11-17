@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% block title %} Profile {% endblock %}
 
 {% block content %}
 
     <div class="header-section"> 
         <h1>Welcome, {{username}}!</h1>
         {% if posts %}
-            <p class="checkRemainingPostsPar">Here are all your posts:</p>
+            <p class="checkRemainingPostsPar mb-3">Here are all your posts:</p>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">
                 Add a Post
             </button>
@@ -18,7 +19,7 @@
                 {% endfor %}
                 </div>
         {% else %}
-                <p class="checkRemainingPostsPar">You haven't added any posts yet. Click "Add a Post" to create your first one!</p>
+                <p class="checkRemainingPostsPar mb-3">You haven't added any posts yet. Click "Add a Post" to create your first one!</p>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">
                     Add a Post
                 </button>

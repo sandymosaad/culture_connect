@@ -1,112 +1,19 @@
 {
-    "next_id": 18,
+    "next_id": 3,
     "users": [
         {
-            "id": 1,
-            "username": "SOSO",
-            "email": "SOSO@JJ",
-            "password": "SKDJ"
-        },
-        {
-            "id": 2,
-            "username": "test",
-            "email": "test@gmail.com",
-            "password": "1234"
-        },
-        {
-            "id": 3,
             "username": "sandy",
             "email": "sandy@gmail.com",
-            "password": "1234"
-        },
-        {
-            "id": 4,
-            "username": "sandy",
-            "email": "sandy5@gmail",
-            "password": "1234"
-        },
-        {
-            "id": 3,
-            "username": "sad",
-            "email": "sf@asfd",
-            "password": "sad",
-            "post_id": 5
-        },
-        {
-            "id": 3,
-            "username": "sady",
-            "email": "sandymosaad24@gmail.com",
             "password": "12345678",
-            "post_id": 6
+            "profile_img": "sandy_profile.jpg",
+            "id": 1
         },
         {
-            "id": 3,
-            "username": "sandy",
-            "email": "soao@gmail.com",
+            "username": "Yousif",
+            "email": "Yousif22@gmail.com",
             "password": "12345678",
-            "post_id": 7
-        },
-        {
-            "username": "soso",
-            "email": "SOSO@gmail.com",
-            "password": "12345678",
-            "id": 8
-        },
-        {
-            "username": "dfs",
-            "email": "dsfs@gmail.com",
-            "password": "12345678",
-            "id": 9
-        },
-        {
-            "username": "dfs",
-            "email": "dsfs@gmail.com",
-            "password": "12345678",
-            "id": 10
-        },
-        {
-            "username": "sandys",
-            "email": "sandys@gmail.com",
-            "password": "12345678",
-            "id": 11
-        },
-        {
-            "username": "sandy_samir",
-            "email": "sandosa@gmail.com",
-            "password": "12345678",
-            "id": 12
-        },
-        {
-            "username": "sososss",
-            "email": "sand55y@gmail.com",
-            "password": "12345678",
-            "id": 13
-        },
-        {
-            "username": "ttt",
-            "email": "ttt@gmail.com",
-            "password": "12345678",
-            "id": 14
-        },
-        {
-            "username": "dodo",
-            "email": "dodo@gmail.com",
-            "password": "12345678",
-            "id": 15
-        },
-        {
-            "username": "sandoda5",
-            "email": "sandodad@gmail.com",
-            "password": "12345678",
-            "profile_img": "sandoda5_profile.webp",
-            "id": 16
-        },
-        {
-            "username": "soso_123",
-            "email": "soso123@gmail.com",
-            "password": "12345678",
-            "profile_img": "soso_123_profile.jpeg",
-            "id": 17
+            "profile_img": "Yousif_profile.webp",
+            "id": 2
         }
     ]
 }

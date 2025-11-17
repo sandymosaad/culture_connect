@@ -100,10 +100,11 @@ const categoryFilter = document.getElementById('categoryFilter');
 const countryFilter = document.getElementById('countryFilter');
 const posts = document.querySelectorAll('.col-12.col-md-4'); 
 
+
 function filterPosts() {
     const countrySelected = countryFilter.value
     const categorySelected = categoryFilter.value
-
+    isMatched=false;
     posts.forEach(post => {
         const postCountry = post.dataset.country || "";
         const postCategory = post.dataset.category || "";
@@ -113,11 +114,19 @@ function filterPosts() {
         const matchCategory = !categorySelected || postCategory === categorySelected;
 
         if (matchCountry && matchCategory) {
+            isMatched = true
             post.style.display = "block";
         } else {
             post.style.display = "none";
         }
     });
+    const noPostsMess = document.getElementById('noPostsMess');
+    if (!isMatched){
+        noPostsMess.classList.remove('d-none')
+    }
+    else{
+        noPostsMess.classList.add('d-none')
+    }
 }
 
 countryFilter.addEventListener('change', filterPosts);

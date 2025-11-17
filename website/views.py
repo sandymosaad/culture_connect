@@ -93,7 +93,7 @@ def profile():
             )
             add_item(new_post.to_dict(), 'posts')
             return redirect(url_for('views.profile'))
-    user_posts = get_user_posts(username)
+    user_posts = get_user_posts(username)[::-1]
     return render_template('profile.html', custom_style="profile", username=username, posts=user_posts, errors=errors, show_modal=show_modal, form_data=request.form if errors else {}
     )
 
@@ -174,7 +174,7 @@ def edit_post(id):
 def global_posts():
     username = session.get('username')
     data = get_items("posts")   
-    all_posts = data["posts"]
+    all_posts = data["posts"][::-1]
     countries_name= get_countries_name(all_posts)
 
     return render_template('global_posts.html', custom_style="global", posts=all_posts, countries_name = countries_name , username = username)
