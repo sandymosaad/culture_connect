@@ -2,8 +2,7 @@
 <div class="post-card">
     <div class="post-header">
         <div class="user-info">
-        
-        <img  src="{{ url_for('static', filename='images/profile.jpg') }}" alt="User Avatar" class="user-avatar">
+        <img  src="{{ url_for('static', filename='uploads/' ~ post.user_profile_img) }}" alt="User Avatar" class="user-avatar">
         <div>
             <h4 class="user-name">{{ post.username}}</h4>
             <span class="post-date">{{ post.date}}</span>

@@ -1,5 +1,6 @@
 from os import path
 import json
+from flask import  current_app
 
 def get_db_path(filename):
     """
@@ -75,3 +76,17 @@ def update_posts(file_name , posts):
     with open(file_path, 'w') as f:
         json.dump(data, f, indent=4)
     
+######################################
+#  Function to save uploaded images and return the new filename
+######################################
+def save_image(file, type_image, username):
+    # Extract the file extension
+    ext = file.filename.rsplit('.', 1)[1]
+    # Create a new filename like "username_type.ext"
+    new_name = f"{username}_{type_image}.{ext}"
+    # Full path where the file will be saved
+    save_path = path.join(current_app.config['UPLOAD_FOLDER'], new_name)
+    # Save the file to the server
+    file.save(save_path)
+    return new_name
+

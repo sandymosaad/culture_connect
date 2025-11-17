@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request , flash, session
 from os import path
 import json
-from .shared import add_item, get_items
+from .shared import add_item, get_items, save_image
 import re
 auth = Blueprint('auth', __name__)
 
@@ -56,6 +56,7 @@ def sign_up():
         username_input = request.form.get('username')
         email_input= request.form.get('email')
         password_input = request.form.get('password')
+        profile_file = request.files.get('profile')  
         response = valid_sign_up_data(username_input, email_input, password_input)
         if response:
             return response
@@ -68,12 +69,15 @@ def sign_up():
         if email_input in users_data['emails']:
             flash('Email already exists', category='error')
             return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
-            
+        
+        new_name_profile =save_image(profile_file, 'profile',username_input )
         new_user = {
             "username": username_input,
             "email": email_input,
-            "password": password_input
+            "password": password_input,
+            'profile_img': new_name_profile
         }
+        
         add_item(new_user,'users')
         return redirect(url_for('auth.login'))
 

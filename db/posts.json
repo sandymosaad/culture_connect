@@ -1,5 +1,5 @@
 {
-    "next_id": 32,
+    "next_id": 37,
     "posts": [
         {
             "title": "The Grand Egyptian Museum",
@@ -143,6 +143,67 @@
             "username": "dodo",
             "id": 30,
             "post_image": null
+        },
+        {
+            "title": "nmnsdb",
+            "body": "msnfdbm flkknefscx jfdslkmnc,x fslcx,m. msnfdbm flkknefscx jfdslkmnc,x fslcx,m. msnfdbm flkknefscx jfdslkmnc,x fslcx,m. msnfdbm flkknefscx jfdslkmnc,x fslcx,m. msnfdbm flkknefscx jfdslkmnc,x fslcx,m. ",
+            "country": "msbf",
+            "category": "Story",
+            "date": "Nov 17, 2025",
+            "flag": "sandoda5_flag.webp",
+            "username": "sandoda5",
+            "id": 32,
+            "post_image": null
+        },
+        {
+            "title": "sadnbsafm",
+            "body": "K.FNSDXBNDS VF WNDSLM,XC FJEDL;M.VK.FNSDXBNDS VF WNDSLM,XC FJEDL;M.",
+            "country": "sfsbnmdg",
+            "category": "Story",
+            "date": "Nov 17, 2025",
+            "flag": "sandoda5_flag.webp",
+            "username": "sandoda5",
+            "id": 33,
+            "user_profile_img": [
+                "sandoda5_profile.webp"
+            ],
+            "post_image": null
+        },
+        {
+            "title": "NFMSDAMN",
+            "body": "mnbmdbfmnfdsmv ewnwfd,zxc. m ksdlfm,xc",
+            "country": "FNSMMDBF",
+            "category": "Story",
+            "date": "Nov 17, 2025",
+            "flag": "sandoda5_flag.webp",
+            "username": "sandoda5",
+            "id": 34,
+            "user_profile_img": "sandoda5_profile.webp",
+            "post_image": null
+        },
+        {
+            "title": "tsets post",
+            "body": "biiysuan dm afsjlkcnm post.user_profile_imgpost.user_profile_imgpost.user_profile_img",
+            "country": "Egypt",
+            "category": "Tourist Attraction",
+            "date": "Nov 17, 2025",
+            "flag": "soso_123_flag.png",
+            "username": "soso_123",
+            "id": 35,
+            "user_profile_img": "soso_123_profile.jpeg",
+            "post_image": null
+        },
+        {
+            "title": "rstsee",
+            "body": "jdnsm ojfdknxcm jmdsamk nv dkjsbvan ojkndms n ojnm , cojnjmdsd ",
+            "country": "dsfahdnf",
+            "category": "Tourist Attraction",
+            "date": "Nov 17, 2025",
+            "flag": "soso_123_flag.webp",
+            "username": "soso_123",
+            "id": 36,
+            "user_profile_img": "soso_123_profile.jpeg",
+            "post_image": "soso_123_post_image.webp"
         }
     ]
 }

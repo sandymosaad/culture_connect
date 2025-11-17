@@ -1,5 +1,5 @@
 {
-    "next_id": 16,
+    "next_id": 18,
     "users": [
         {
             "id": 1,
@@ -93,6 +93,20 @@
             "email": "dodo@gmail.com",
             "password": "12345678",
             "id": 15
+        },
+        {
+            "username": "sandoda5",
+            "email": "sandodad@gmail.com",
+            "password": "12345678",
+            "profile_img": "sandoda5_profile.webp",
+            "id": 16
+        },
+        {
+            "username": "soso_123",
+            "email": "soso123@gmail.com",
+            "password": "12345678",
+            "profile_img": "soso_123_profile.jpeg",
+            "id": 17
         }
     ]
 }

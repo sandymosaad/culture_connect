@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template, session, flash, redirect, url_for, request, current_app
 import datetime  # For handling dates  
 import os        # For working with files and directories
-from .shared import add_item, get_items,update_posts
+from .shared import add_item, get_items, update_posts,save_image
 import re 
 
 # Define a Blueprint to organize routes
@@ -10,7 +10,7 @@ views = Blueprint('views', __name__)
 
 # Define the Post class to store information for each post
 class Post:
-    def __init__(self, title, body, country, category, date, flag, username, id, post_image=None):
+    def __init__(self, title, body, country, category, date, flag, username, id,user_profile_img ,post_image=None):
         # Basic attributes of the post
         self.title = title
         self.body = body
@@ -20,6 +20,7 @@ class Post:
         self.flag = flag
         self.username = username
         self.id = id
+        self.user_profile_img= user_profile_img
         self.post_image = post_image  # Optional post image
 
     # Method to convert the Post object to a dictionary
@@ -33,6 +34,7 @@ class Post:
             "flag": self.flag,
             "username": self.username,
             "id" : self.id,
+            'user_profile_img':self.user_profile_img,
             "post_image": self.post_image,
 
         }
@@ -50,11 +52,11 @@ def index():
 @views.route('/profile', methods=['POST', 'GET'])
 def profile():
     username = session.get('username')
+    
     if not username:
         flash('Please log in first', category='error')
         return redirect(url_for('auth.login'))
 
-    user_posts = get_user_posts(username)
     errors = {}
     show_modal = False  
 
@@ -72,6 +74,10 @@ def profile():
             # Save post image if exists
             post_image_name = save_image(post_data['post_image_file'], 'post_image', username) if post_data['post_image_file'] else None
 
+            data = get_items('users')
+            users = data.get('users', [])
+            user_profile_img =[u['profile_img'] for u in users if u['username'] == username][0]
+            
             new_post = Post(
                 title=post_data['title'],
                 body=post_data['body'],
@@ -81,11 +87,13 @@ def profile():
                 flag=new_name_flag,
                 username=username,
                 id = None,
-                post_image=post_image_name
+                user_profile_img=user_profile_img,
+                post_image=post_image_name,
+                
             )
             add_item(new_post.to_dict(), 'posts')
             return redirect(url_for('views.profile'))
-
+    user_posts = get_user_posts(username)
     return render_template('profile.html', custom_style="profile", username=username, posts=user_posts, errors=errors, show_modal=show_modal, form_data=request.form if errors else {}
     )
 
@@ -100,18 +108,6 @@ def get_user_posts(username):
             user_posts.append(post)
     return user_posts
 
-
-# Function to save uploaded images and return the new filename
-def save_image(file, type_image, username):
-    # Extract the file extension
-    ext = file.filename.rsplit('.', 1)[1]
-    # Create a new filename like "username_type.ext"
-    new_name = f"{username}_{type_image}.{ext}"
-    # Full path where the file will be saved
-    save_path = os.path.join(current_app.config['UPLOAD_FOLDER'], new_name)
-    # Save the file to the server
-    file.save(save_path)
-    return new_name
 
 # Get form data
 def get_post_data():
@@ -207,7 +203,4 @@ def valid_post_data(title, body, country):
     if not re.match(pattern_post_country, country):
         errors['country_error'] = "Country name must be at least 3 letters and contain only Arabic/English letters and spaces."
 
-    # if errors:
-    #     return render_template('post_modal.html', custom_style="profile", username = username, posts = user_posts, title = title, body = body, country = country, has_diff_navbar_style = True, errors = errors)
-    # return None
     return errors
