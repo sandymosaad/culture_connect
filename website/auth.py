@@ -81,8 +81,9 @@ def sign_up():
             flash('Email already exists', category='error')
             return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
         
-        new_name_profile =save_image(profile_file_input, 'profile', username_input )
-        new_name_flag =save_image(flag_file_input, 'flag', username_input )
+        id = get_items("users")['next_id']   
+        new_name_profile =save_image(profile_file_input, 'profile', username_input,id )
+        new_name_flag =save_image(flag_file_input, 'flag', username_input,id)
 
         # Create user object
         new_user = User(

@@ -1,10 +1,9 @@
 # Import necessary packages from Flask
-from flask import Blueprint, render_template, session, flash, redirect, url_for, request, current_app
-import datetime  # For handling dates  
-import os        # For working with files and directories
-from .shared import add_item, get_items, update_posts,save_image
+from flask import Blueprint, render_template, session, flash, redirect, url_for, request
+from .shared import add_item, get_items, save_image
 from .models import Post
 from .validators import valid_post_data
+from .post_services import get_user_posts, prepare_post_data, delete_post_by_id, edit_post_by_id, get_countries_name
 # Define a Blueprint to organize routes
 views = Blueprint('views', __name__)
 
@@ -30,15 +29,20 @@ def profile():
 
     if request.method == 'POST':
         
-        post_data = get_post_data()
+        post_data = prepare_post_data(
+            title=request.form.get('title'),
+            body=request.form.get('body'),
+            category=request.form.get('category'),
+            post_image_file=request.files.get('post-img')
+        )
         errors = valid_post_data(post_data['title'], post_data['body'])
 
         if errors:
             show_modal = True  
         else:
-
+            id = get_items("posts")['next_id']   
             # Save post image if exists
-            post_image_name = save_image(post_data['post_image_file'], 'post_image', username) if post_data['post_image_file'] else None
+            post_image_name = save_image(post_data['post_image_file'], 'post_image', username,id ) if post_data['post_image_file'] else None
 
             data = get_items('users')
             users = data.get('users', [])
@@ -69,78 +73,22 @@ def profile():
     return render_template('profile.html', custom_style="profile", username=username, posts=user_posts, errors=errors, show_modal=show_modal, form_data=request.form if errors else {}
     )
 
-# get all posts for the current user
-def get_user_posts(username):
-    data = get_items("posts")   
-    all_posts = data["posts"]
-    #all_posts =get_items('posts')
-    user_posts = []
-    for post in all_posts:
-        if (post["username"] == username):
-            user_posts.append(post)
-    return user_posts
-
-
-# Get form data
-def get_post_data():
-        title = request.form.get('title')
-        body = request.form.get('body')
-        country = request.form.get('country')
-        category = request.form.get('category')
-        flag_file = request.files.get('flag')            # Country flag
-        post_image_file = request.files.get('post-img')  # Optional post image
-        date = datetime.date.today().strftime("%b %d, %Y") # Today's date string to can story it in json
-        
-        return {
-        "title": title,
-        "body": body,
-        "country": country,
-        "category": category,
-        "date": date,
-        "flag_file": flag_file,
-        "post_image_file": post_image_file
-        }
-
-
 @views.route("/delete/<int:id>", methods=["POST"])
 def delete_post(id):
-    try:
-        posts = get_items('posts')
-        posts = [p for p in posts['posts'] if int(p["id"]) != int(id)]
-        update_posts('posts',posts)
+    success, error = delete_post_by_id(id)
+    if success:
         return {"success": True}
-    except Exception as e:
-        print("DELETE ERROR:", e)
-        return {"success": False, "error": str(e)}, 500 
-    
+    return {"success": False, "error": error}, 500
 
-@views.route('/edit/<int:id>', methods=['POST'])
+
+@views.route("/edit/<int:id>", methods=["POST"])
 def edit_post(id):
-    data = get_items("posts")   
-    posts = data["posts"]
-    try:
-        for post in posts:
-            # if "id" not in post:
-            #     print("POST WITHOUT ID:", post)
-            if "id" in post and int(post["id"]) == int(id):
-                post["title"] = request.form.get("title")
-                post["body"] = request.form.get("body")
-                post["country"] = request.form.get("country")
-                post["category"] = request.form.get("category")
-                
-                if "post_image" in request.files and request.files["post_image"].filename:
-                    post["post_image"] = save_image(request.files["post_image"], 'post_image', post['username'])
-                
-                if "flag" in request.files and request.files["flag"].filename:
-                    post["flag"] = save_image(request.files["flag"], 'flag', post['username'])
-
-                break
-        update_posts("posts", posts)
+    form_data = request.form
+    files = request.files
+    success, error = edit_post_by_id(id, form_data, files)
+    if success:
         return {"success": True}
-    except Exception as e:
-        print("EDIT ERROR:", e)
-        return {"success": False, "error": str(e)}, 500
-    
+    return {"success": False, "error": error}, 500
 
 @views.route('/global')
 def global_posts():
@@ -150,11 +98,4 @@ def global_posts():
     countries_name= get_countries_name(all_posts)
 
     return render_template('global_posts.html', custom_style="global", posts=all_posts, countries_name = countries_name , username = username)
-
-def get_countries_name(posts):
-    countries_name=[]
-    for post in posts:
-        if post['user_country'] not in countries_name:
-            countries_name.append(post['user_country'])
-    return countries_name
 

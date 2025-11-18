@@ -69,24 +69,16 @@ def get_items(file_name):
             }
 
 
-def update_posts(file_name , posts):
-    file_path = get_db_path(file_name)
-    data = get_items(file_name)
-    data[file_name]= posts
-    with open(file_path, 'w') as f:
-        json.dump(data, f, indent=4)
-    
 ######################################
 #  Function to save uploaded images and return the new filename
 ######################################
-def save_image(file, type_image, username):
+def save_image(file, type_image, username, id):
     # Extract the file extension
     ext = file.filename.rsplit('.', 1)[1]
     # Create a new filename like "username_type.ext"
-    new_name = f"{username}_{type_image}.{ext}"
+    new_name = f"{username}_{type_image}_{id}.{ext}"
     # Full path where the file will be saved
     save_path = path.join(current_app.config['UPLOAD_FOLDER'], new_name)
     # Save the file to the server
     file.save(save_path)
     return new_name
-
