@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request , flash, session
+from .models import User
 from os import path
 import json
 from .shared import add_item, get_items, save_image
@@ -78,16 +79,18 @@ def sign_up():
         new_name_profile =save_image(profile_file_input, 'profile', username_input )
         new_name_flag =save_image(flag_file_input, 'flag', username_input )
 
-        new_user = {
-            "username": username_input,
-            "email": email_input,
-            "password": password_input,
-            'profile_img': new_name_profile,
-            'flag_img': new_name_flag,
-            'country': country_input
-        }
-        
-        add_item(new_user,'users')
+        # Create user object
+        new_user = User(
+            id=None,
+            username=username_input,
+            email=email_input,
+            password=password_input,
+            user_profile_img=new_name_profile,
+            user_country=country_input,
+            user_flag_country_img=new_name_flag
+        )
+                # Save to JSON
+        add_item(new_user.to_dict(), "users")
         return redirect(url_for('auth.login'))
 
     return render_template('signup.html', custom_style='auth', has_diff_navbar_style=True,  errors={})

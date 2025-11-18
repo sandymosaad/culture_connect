@@ -1,5 +1,5 @@
 {
-    "next_id": 15,
+    "next_id": 18,
     "posts": [
         {
             "title": "sosos",
@@ -39,6 +39,42 @@
             "user_flag_country_img": "sevo_flag.jpeg",
             "post_image": "sevo_post_image.webp",
             "country": null
+        },
+        {
+            "title": "test2",
+            "body": "vBody of postBody of postBody of postBody of postBody of postBody of post",
+            "category": "Tourist Attraction",
+            "date": "Nov 18, 2025",
+            "username": "tset2",
+            "id": 15,
+            "user_profile_img": "tset2_profile.jpg",
+            "user_country": "saf",
+            "user_flag_country_img": "tset2_flag.jpg",
+            "post_image": "tset2_post_image.webp"
+        },
+        {
+            "title": "rtrtJHJ",
+            "body": "HJJBBS xasbhj n saxsahuo sxadhn asa gu",
+            "category": "Tourist Attraction",
+            "date": "Nov 18, 2025",
+            "username": "tset2",
+            "id": 16,
+            "user_profile_img": "tset2_profile.jpg",
+            "user_country": "saf",
+            "user_flag_country_img": "tset2_flag.jpg",
+            "post_image": null
+        },
+        {
+            "title": "snbbbbbbbbbbbbb",
+            "body": "wsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+            "category": "Tourist Attraction",
+            "date": "Nov 18, 2025",
+            "username": "tset2",
+            "id": 17,
+            "user_profile_img": "tset2_profile.jpg",
+            "user_country": "saf",
+            "user_flag_country_img": "tset2_flag.jpg",
+            "post_image": null
         }
     ]
 }

@@ -3,41 +3,11 @@ from flask import Blueprint, render_template, session, flash, redirect, url_for,
 import datetime  # For handling dates  
 import os        # For working with files and directories
 from .shared import add_item, get_items, update_posts,save_image
+from .models import Post
 import re 
 
 # Define a Blueprint to organize routes
 views = Blueprint('views', __name__)
-
-# Define the Post class to store information for each post
-class Post:
-    def __init__(self, title, body, category, date,  username, id, user_profile_img, user_country, user_flag_country_img, post_image=None):
-        # Basic attributes of the post
-        self.title = title
-        self.body = body
-        self.category = category
-        self.date = date
-        self.username = username
-        self.id = id
-        self.user_profile_img = user_profile_img
-        self.user_country = user_country
-        self.user_flag_country_img = user_flag_country_img
-        self.post_image = post_image  # Optional post image
-
-    # Method to convert the Post object to a dictionary
-    def to_dict(self):
-        return {
-            "title": self.title,
-            "body": self.body,
-            "category": self.category,
-            "date": str(self.date),
-            "username": self.username,
-            "id" : self.id,
-            'user_profile_img':self.user_profile_img,
-            'user_country' : self.user_country,
-            'user_flag_country_img' : self.user_flag_country_img,
-            "post_image": self.post_image,
-        }
-
 
 # Homepage route
 @views.route('/')
@@ -75,9 +45,9 @@ def profile():
             users = data.get('users', [])
             for u in users:
                 if  u['username'] == username:
-                    user_profile_img = u['profile_img']
-                    user_country = u['country']
-                    user_flag_country_img = u['flag_img']
+                    user_profile_img = u['user_profile_img']
+                    user_country = u['user_country']
+                    user_flag_country_img = u['user_flag_country_img']
                     
                     
             

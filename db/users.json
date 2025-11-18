@@ -1,5 +1,5 @@
 {
-    "next_id": 6,
+    "next_id": 7,
     "users": [
         {
             "username": "sandy",
@@ -41,6 +41,15 @@
             "flag_img": "sevo_flag.jpeg",
             "country": "test country",
             "id": 5
+        },
+        {
+            "id": 6,
+            "username": "tset2",
+            "email": "test2@gmail.com",
+            "password": "12345678",
+            "user_profile_img": "tset2_profile.jpg",
+            "user_country": "saf",
+            "user_flag_country_img": "tset2_flag.jpg"
         }
     ]
 }

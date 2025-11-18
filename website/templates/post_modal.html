@@ -1,4 +1,3 @@
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/post-model.css') }}">
 <div class="modal fade {% if show_modal %}show{% endif %}" id="{{ modal_id }}" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -57,7 +56,7 @@
                         {% endif %}
                         <input type="file" name="post-img" id="{{ prefix }}post-img" class="form-control" accept="image/*">
                     </div>
-                    
+
                     <div class="modal-footer flex justify-content-center">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         {% if is_edit %}
