@@ -4,8 +4,7 @@ import datetime  # For handling dates
 import os        # For working with files and directories
 from .shared import add_item, get_items, update_posts,save_image
 from .models import Post
-import re 
-
+from .validators import valid_post_data
 # Define a Blueprint to organize routes
 views = Blueprint('views', __name__)
 
@@ -159,19 +158,3 @@ def get_countries_name(posts):
             countries_name.append(post['user_country'])
     return countries_name
 
-
-def valid_post_data(title, body):
-    pattern_post_title = r'^[\u0600-\u06FFa-zA-Z0-9][\u0600-\u06FFa-zA-Z0-9\s\-\_,\.]{2,}$'
-    pattern_post_body = r'^.{30,}$'
-    pattern_post_country = r'^[\u0600-\u06FFa-zA-Z\s]{3,}$'
-
-    errors = {}
-
-    if not re.match(pattern_post_title, title):
-        errors['title_error'] = "Title must be at least 3 characters and can include Arabic/English letters, numbers, spaces, and basic symbols."
-
-    if not re.match(pattern_post_body, body):
-        errors['body_error'] = "Body must be at least 30 characters."
-
-
-    return errors

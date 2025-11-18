@@ -1,5 +1,5 @@
 {
-    "next_id": 18,
+    "next_id": 20,
     "posts": [
         {
             "title": "sosos",
@@ -74,6 +74,30 @@
             "user_profile_img": "tset2_profile.jpg",
             "user_country": "saf",
             "user_flag_country_img": "tset2_flag.jpg",
+            "post_image": null
+        },
+        {
+            "title": "sggg",
+            "body": "Body must be at least 30 characters.Body must be at least 30 characters.Body must be at least 30 characters.Body must be at least 30 characters.",
+            "category": "Tourist Attraction",
+            "date": "Nov 18, 2025",
+            "username": "tset2",
+            "id": 18,
+            "user_profile_img": "tset2_profile.jpg",
+            "user_country": "saf",
+            "user_flag_country_img": "tset2_flag.jpg",
+            "post_image": null
+        },
+        {
+            "title": "smust be at least 3 characters and can include Arabic/English letters, numbers, spaces, and basic symbols.",
+            "body": "dmust be at least 3 characters and can include Arabic/English letters, numbers, spaces, and basic symbols.must be at least 3 characters and can include Arabic/English letters, numbers, spaces, and basic symbols.",
+            "category": "Tourist Attraction",
+            "date": "Nov 18, 2025",
+            "username": "test",
+            "id": 19,
+            "user_profile_img": "test_profile.jpeg",
+            "user_country": "Egypt",
+            "user_flag_country_img": "test_flag.jpeg",
             "post_image": null
         }
     ]
