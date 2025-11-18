@@ -38,7 +38,7 @@ def add_item(item ,file_name ):
                 file_name: []
             }
     new_id = data['next_id']
-    item['id'] = new_id
+    # item['id'] = new_id
     
     data[file_name].append(item)
     data['next_id'] = new_id + 1

@@ -32,10 +32,9 @@
         {% for post in posts %}
         <div class="col-12 col-md-4 d-flex"
             id="post-{{ post.id }}"
-            data-country="{{ post.user_country|lower}}"
-            data-category="{{ post.category|lower}}">
+            data-country="{{ post.user_country|lower }}"
+            data-category="{{ post.category|lower }}">
             {% include "card.html" %}
-
         </div>
         {% endfor %}
     </div>

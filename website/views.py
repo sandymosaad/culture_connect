@@ -28,6 +28,17 @@ def profile():
     errors = {}
     show_modal = False  
 
+    data = get_items('users')
+    users = data.get('users', [])
+
+
+    for u in users:
+        if  u['username'] == username:
+            user_id = u['id']
+            user_profile_img = u['user_profile_img']
+            user_country = u['user_country']
+            user_flag_country_img = u['user_flag_country_img']
+            
     if request.method == 'POST':
         
         post_data = prepare_post_data(
@@ -45,32 +56,36 @@ def profile():
             # Save post image if exists
             post_image_name = save_image(post_data['post_image_file'], 'post_image', username,id ) if post_data['post_image_file'] else None
 
-            data = get_items('users')
-            users = data.get('users', [])
-            for u in users:
-                if  u['username'] == username:
-                    user_profile_img = u['user_profile_img']
-                    user_country = u['user_country']
-                    user_flag_country_img = u['user_flag_country_img']
                     
             new_post = Post(
                 title=post_data['title'],
                 body=post_data['body'],
                 category=post_data['category'],
                 date=post_data['date'],
-                username=username,
-                id = None,
-                user_profile_img=user_profile_img,
-                user_country = user_country,
-                user_flag_country_img = user_flag_country_img,
+                id = id,
+                user_id=user_id,
                 post_image=post_image_name,
                 
             )
             add_item(new_post.to_dict(), 'posts')
             return redirect(url_for('views.profile'))
+            
+    user_posts = Post.get_user_posts(user_id)[::-1]
     
-    user_posts = Post.get_user_posts(username)[::-1]
-    return render_template('profile.html', custom_style="profile", username=username, posts=user_posts, errors=errors, show_modal=show_modal, form_data=request.form if errors else {}
+    for post in user_posts:
+        post['username'] = username
+        post['user_profile_img'] = user_profile_img
+        post['user_country'] =  user_country
+        post['user_flag_country_img'] =user_flag_country_img
+
+
+    return render_template('profile.html',
+                        custom_style="profile",
+                        username=username,
+                        posts=user_posts,
+                        errors=errors,
+                        show_modal=show_modal,
+                        form_data=request.form if errors else {}
     )
 
 @views.route("/delete/<int:id>", methods=["POST"])
@@ -93,9 +108,20 @@ def edit_post(id):
 @views.route('/global')
 def global_posts():
     username = session.get('username')
-    data = get_items("posts")   
-    all_posts = data["posts"][::-1]
+    posts_data = get_items("posts")   
+    all_posts = posts_data["posts"][::-1]
+    users_data = get_items("users")   
+    all_users = {user['id']: user for user in users_data["users"]}
+    
+    for post in all_posts:
+        user = all_users.get(post['user_id'])
+        if user:
+            post['username'] = user['username']
+            post['user_profile_img'] = user['user_profile_img']
+            post['user_country'] = user['user_country']
+            post['user_flag_country_img'] = user['user_flag_country_img']
+    
     countries_name= get_countries_name(all_posts)
 
-    return render_template('global_posts.html', custom_style="global", posts=all_posts, countries_name = countries_name , username = username)
+    return render_template('global_posts.html', custom_style="global", posts=all_posts,  countries_name = countries_name,username=username)
 

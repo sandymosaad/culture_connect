@@ -1,18 +1,6 @@
 {
-    "next_id": 13,
+    "next_id": 20,
     "posts": [
-        {
-            "title": "salad with peanut butter",
-            "body": "salad with peanut butter is the most popular dish in Sudan which include some tomatoes, onions, onions' tale, it seams like it's plain salad, but when you add some peanut butter to it, you will love it",
-            "category": "Dish",
-            "date": "Nov 18, 2025",
-            "username": "yousif",
-            "id": 2,
-            "user_profile_img": "yousif_profile_1.webp",
-            "user_country": "s u d a n",
-            "user_flag_country_img": "yousif_flag_1.jpg",
-            "post_image": null
-        },
         {
             "title": "3333333333333333333",
             "body": "Body of post Body of postBody of postBody of postBody of postBody of postBody of postBody of post",
@@ -20,21 +8,10 @@
             "date": "Nov 18, 2025",
             "username": "yousif",
             "id": 3,
+            "user_id": 1,
             "user_profile_img": "yousif_profile_1.webp",
             "user_country": "s u d a n",
             "user_flag_country_img": "yousif_flag_1.jpg",
-            "post_image": null
-        },
-        {
-            "title": "rrr",
-            "body": "8888888888888888888888888888888ffffffeeeeeeeeeeeeeeeee",
-            "category": "Tourist Attraction",
-            "date": "Nov 18, 2025",
-            "username": "sandy",
-            "id": 10,
-            "user_profile_img": "sandy_profile_2.webp",
-            "user_country": "sud a n",
-            "user_flag_country_img": "sandy_flag_2.webp",
             "post_image": null
         },
         {
@@ -44,10 +21,47 @@
             "date": "Nov 18, 2025",
             "username": "Abdullah",
             "id": 11,
+            "user_id": 3,
             "user_profile_img": "Abdullah_profile_3.jpg",
             "user_country": "Yemen",
             "user_flag_country_img": "Abdullah_flag_3.jpeg",
             "post_image": "Abdullah_post_image_11.jpg"
+        },
+        {
+            "title": "mndbbaa",
+            "body": "Body must be at least 30 characters long and contain at least 10 letters (Arabic or English).",
+            "category": "Story",
+            "date": "Nov 18, 2025",
+            "id": 15,
+            "user_id": 4,
+            "post_image": null
+        },
+        {
+            "title": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "body": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "category": "Tourist Attraction",
+            "date": "Nov 18, 2025",
+            "id": 16,
+            "user_id": 4,
+            "post_image": null
+        },
+        {
+            "title": "hhhhhhhhhhhhhhhhhhhhhhhhhhh222222",
+            "body": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+            "category": "Tourist Attraction",
+            "date": "Nov 18, 2025",
+            "id": 18,
+            "user_id": 4,
+            "post_image": null
+        },
+        {
+            "title": "test post 222",
+            "body": "test body testest body t body test body body t body test body test body test body test body test body test body test body ",
+            "category": "Story",
+            "date": "Nov 19, 2025",
+            "id": 19,
+            "user_id": 2,
+            "post_image": null
         }
     ]
 }
