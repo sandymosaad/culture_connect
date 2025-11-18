@@ -12,14 +12,15 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
+        email = request.form.get('email')
         password = request.form.get('password')
     
         data = get_items('users')
         users =data['users']
-        #users = get_items('users')
+        
         user_found = None
         for user in users:
-            if user['username'] == username:
+            if user['email'] == email:
                 user_found = user
                 break
 
