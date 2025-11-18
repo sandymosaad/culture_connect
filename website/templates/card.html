@@ -25,14 +25,14 @@
 
     <div class="post-footer">
         <div class="country-info">
-            <img src="{{ url_for('static', filename='uploads/' ~  post.flag) }}" alt="Country Flag" class="country-flag">
-            <span class="country-name">{{ post.country }}</span>
+            <img src="{{ url_for('static', filename='uploads/' ~  post.user_flag_country_img) }}" alt="Country Flag" class="country-flag">
+            <span class="country-name">{{ post.user_country }}</span>
         </div>
 
         {% if show_controls%}
             <div class="card-actions">
                 <button class='btn' 
-                    onclick='showEditModal({{ post.id }}, {{ post.title|tojson }}, {{ post.body|tojson }}, {{ post.country|tojson }}, {{ post.category|tojson }}, {{ post.post_image|tojson }}, {{ post.flag|tojson }})'>
+                    onclick='showEditModal({{ post.id }}, {{ post.title|tojson }}, {{ post.body|tojson }}, {{ post.category|tojson }}, {{ post.post_image|tojson }})'>
                     <i class="fas fa-edit edit-icon" title="Edit"></i> 
                 </button>
                 <button class='btn' onclick="deletePost({{ post.id }})">

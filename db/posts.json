@@ -1,77 +1,44 @@
 {
-    "next_id": 10,
+    "next_id": 15,
     "posts": [
         {
-            "title": "The Grand Egyptian Museum",
-            "body": "The Grand Egyptian Museum, located near the Giza Pyramids, is set to become the largest archaeological museum in the world. It houses thousands of ancient artifacts, including the full collection of King Tutankhamun\\u2019s treasures.",
-            "country": "Egypt",
-            "category": "Tourist Attraction",
-            "date": "Nov 17, 2025",
-            "flag": "sandy_flag.jpeg",
-            "username": "sandy",
-            "id": 1,
-            "user_profile_img": "sandy_profile.jpg",
-            "post_image": "sandy_post_image.png"
-        },
-        {
-            "title": "Koshari",
-            "body": "Koshari is one of Egypt\\u2019s most iconic dishes \\u2014 a delicious mix of rice, pasta, lentils, chickpeas, and crispy fried onions, topped with a spicy tomato sauce and garlic vinegar.\\r\\n\\r\\nIt\\u2019s a meal that tells a story of Egypt\\u2019s culture \\u2014 simple, flavorful, and made for everyone. You can find Koshari everywhere, from small street carts to famous restaurants, bringing people together with every bite! ",
-            "country": "Egypt",
+            "title": "sosos",
+            "body": "sfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfddddddddddsfdddddddddd",
             "category": "Dish",
             "date": "Nov 17, 2025",
-            "flag": "sandy_flag.jpeg",
-            "username": "sandy",
-            "id": 2,
-            "user_profile_img": "sandy_profile.jpg",
-            "post_image": "sandy_post_image.webp"
+            "username": "test",
+            "id": 12,
+            "user_profile_img": "test_profile.jpeg",
+            "user_country": "Egypt",
+            "user_flag_country_img": "test_flag.jpeg",
+            "post_image": null,
+            "country": null
         },
         {
-            "title": "test post",
-            "body": " test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body test body ",
-            "country": "test country",
-            "category": "Tourist Attraction",
-            "date": "Nov 17, 2025",
-            "flag": "sandy_flag.jpeg",
-            "username": "sandy",
-            "id": 3,
-            "user_profile_img": "sandy_profile.jpg",
-            "post_image": null
-        },
-        {
-            "title": "TEST",
-            "body": "TEATESESXGF IDSHDJ OLJSLFKCM P SKDL TEATESESXGF IDSHDJ OLJSLFKCM P SKDL TEATESESXGF IDSHDJ OLJSLFKCM P SKDL ",
-            "country": "test country",
-            "category": "Tourist Attraction",
-            "date": "Nov 17, 2025",
-            "flag": "sandy_flag.jpeg",
-            "username": "sandy",
-            "id": 4,
-            "user_profile_img": "sandy_profile.jpg",
-            "post_image": null
-        },
-        {
-            "title": "TESDTTSD",
-            "body": "REDSCFSG ILKHS DN  VREDSCFSG ILKHS DN REDSCFSG ILKHS DN REDSCFSG ILKHS DN REDSCFSG ILKHS DN REDSCFSG ILKHS DN ",
-            "country": "TTSADGF",
+            "title": "tsset post edit",
+            "body": "test body test body test body test body test body test body test body test body ",
             "category": "Dish",
             "date": "Nov 17, 2025",
-            "flag": "sandy_flag.jpeg",
-            "username": "sandy",
-            "id": 5,
-            "user_profile_img": "sandy_profile.jpg",
-            "post_image": null
+            "username": "dodo",
+            "id": 13,
+            "user_profile_img": "dodo_profile.jpg",
+            "user_country": "Egypt",
+            "user_flag_country_img": "dodo_flag.jpeg",
+            "post_image": "dodo_post_image.webp",
+            "country": null
         },
         {
-            "title": "safdav",
-            "body": "kshbjgfv oljdncbnsp;j sdjnkmkshbjgfv oljdncbnsp;j sdjnkm",
-            "country": "jkdgvsahv",
-            "category": "Tourist Attraction",
-            "date": "Nov 17, 2025",
-            "flag": "sandy_flag.jpeg",
-            "username": "sandy",
-            "id": 6,
-            "user_profile_img": "sandy_profile.jpg",
-            "post_image": null
+            "title": "test post sevon sad as",
+            "body": "test body vndlmksb vvsikks bmm bnams l;msd  ",
+            "category": "proverb",
+            "date": "Nov 18, 2025",
+            "username": "sevo",
+            "id": 14,
+            "user_profile_img": "sevo_profile.jpeg",
+            "user_country": "test country",
+            "user_flag_country_img": "sevo_flag.jpeg",
+            "post_image": "sevo_post_image.webp",
+            "country": null
         }
     ]
 }

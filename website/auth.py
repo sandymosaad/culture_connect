@@ -56,12 +56,17 @@ def sign_up():
         username_input = request.form.get('username')
         email_input= request.form.get('email')
         password_input = request.form.get('password')
-        profile_file = request.files.get('profile')  
-        response = valid_sign_up_data(username_input, email_input, password_input)
+        profile_file_input = request.files.get('profile')
+        flag_file_input = request.files.get('flag')
+        country_input = request.form.get('country')
+
+
+        
+        response = valid_sign_up_data(username_input, email_input, password_input, country_input)
         if response:
             return response
 
-        users_data = get_usernames_and_emails()
+        users_data = extract_usernames_and_emails()
         if username_input in users_data['usernames']:
             flash(f'Username "{username_input}" already exists', category='error')
             return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
@@ -70,12 +75,16 @@ def sign_up():
             flash('Email already exists', category='error')
             return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
         
-        new_name_profile =save_image(profile_file, 'profile',username_input )
+        new_name_profile =save_image(profile_file_input, 'profile', username_input )
+        new_name_flag =save_image(flag_file_input, 'flag', username_input )
+
         new_user = {
             "username": username_input,
             "email": email_input,
             "password": password_input,
-            'profile_img': new_name_profile
+            'profile_img': new_name_profile,
+            'flag_img': new_name_flag,
+            'country': country_input
         }
         
         add_item(new_user,'users')
@@ -83,10 +92,12 @@ def sign_up():
 
     return render_template('signup.html', custom_style='auth', has_diff_navbar_style=True,  errors={})
 
-def valid_sign_up_data(username, email, password):
+def valid_sign_up_data(username, email, password, country):
     pattern_username = r'^[a-zA-Z]{3,}[a-zA-Z0-9_]*$'
     pattern_email =r'^[a-zA-Z]+[a-zA-Z0-9_-]*@(gmail|yahoo|outlook)\.com$'
     pattern_password = r'^[a-zA-Z0-9_\- @#]{8,}$'
+    pattern_user_country = r'^[\u0600-\u06FFa-zA-Z\s]{3,}$'
+
     errors ={}
    
     if not re.match(pattern_username, username):
@@ -97,13 +108,16 @@ def valid_sign_up_data(username, email, password):
 
     if not re.match(pattern_password, password):
         errors["password_error"] = "Password must be at least 8 characters."
+        
+    if not re.match(pattern_user_country, country):
+        errors["country_error"] = "Invalid country name."
 
     if errors:
-        return render_template("signup.html", custom_style='auth', username=username, email=email,password=password, has_diff_navbar_style=True, errors=errors) 
+        return render_template("signup.html", custom_style='auth', username = username, email = email, password = password, country = country, has_diff_navbar_style = True, errors = errors) 
     
     return None
 
-def get_usernames_and_emails():
+def extract_usernames_and_emails():
     data = get_items('users')
     users = data.get('users', [])
 

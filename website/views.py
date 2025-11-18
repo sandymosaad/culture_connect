@@ -10,17 +10,17 @@ views = Blueprint('views', __name__)
 
 # Define the Post class to store information for each post
 class Post:
-    def __init__(self, title, body, country, category, date, flag, username, id,user_profile_img ,post_image=None):
+    def __init__(self, title, body, category, date,  username, id, user_profile_img, user_country, user_flag_country_img, post_image=None):
         # Basic attributes of the post
         self.title = title
         self.body = body
-        self.country = country
         self.category = category
         self.date = date
-        self.flag = flag
         self.username = username
         self.id = id
-        self.user_profile_img= user_profile_img
+        self.user_profile_img = user_profile_img
+        self.user_country = user_country
+        self.user_flag_country_img = user_flag_country_img
         self.post_image = post_image  # Optional post image
 
     # Method to convert the Post object to a dictionary
@@ -28,15 +28,14 @@ class Post:
         return {
             "title": self.title,
             "body": self.body,
-            "country": self.country,
             "category": self.category,
             "date": str(self.date),
-            "flag": self.flag,
             "username": self.username,
             "id" : self.id,
             'user_profile_img':self.user_profile_img,
+            'user_country' : self.user_country,
+            'user_flag_country_img' : self.user_flag_country_img,
             "post_image": self.post_image,
-
         }
 
 
@@ -63,31 +62,35 @@ def profile():
     if request.method == 'POST':
         
         post_data = get_post_data()
-        errors = valid_post_data(post_data['title'], post_data['body'], post_data['country'])
+        errors = valid_post_data(post_data['title'], post_data['body'])
 
         if errors:
             show_modal = True  
         else:
-            # Save flag image
-            new_name_flag = save_image(post_data['flag_file'], 'flag', username)
 
             # Save post image if exists
             post_image_name = save_image(post_data['post_image_file'], 'post_image', username) if post_data['post_image_file'] else None
 
             data = get_items('users')
             users = data.get('users', [])
-            user_profile_img =[u['profile_img'] for u in users if u['username'] == username][0]
+            for u in users:
+                if  u['username'] == username:
+                    user_profile_img = u['profile_img']
+                    user_country = u['country']
+                    user_flag_country_img = u['flag_img']
+                    
+                    
             
             new_post = Post(
                 title=post_data['title'],
                 body=post_data['body'],
-                country=post_data['country'],
                 category=post_data['category'],
                 date=post_data['date'],
-                flag=new_name_flag,
                 username=username,
                 id = None,
                 user_profile_img=user_profile_img,
+                user_country = user_country,
+                user_flag_country_img = user_flag_country_img,
                 post_image=post_image_name,
                 
             )
@@ -182,12 +185,12 @@ def global_posts():
 def get_countries_name(posts):
     countries_name=[]
     for post in posts:
-        if post['country'] not in countries_name:
-            countries_name.append(post['country'])
+        if post['user_country'] not in countries_name:
+            countries_name.append(post['user_country'])
     return countries_name
 
 
-def valid_post_data(title, body, country):
+def valid_post_data(title, body):
     pattern_post_title = r'^[\u0600-\u06FFa-zA-Z0-9][\u0600-\u06FFa-zA-Z0-9\s\-\_,\.]{2,}$'
     pattern_post_body = r'^.{30,}$'
     pattern_post_country = r'^[\u0600-\u06FFa-zA-Z\s]{3,}$'
@@ -200,7 +203,5 @@ def valid_post_data(title, body, country):
     if not re.match(pattern_post_body, body):
         errors['body_error'] = "Body must be at least 30 characters."
 
-    if not re.match(pattern_post_country, country):
-        errors['country_error'] = "Country name must be at least 3 letters and contain only Arabic/English letters and spaces."
 
     return errors

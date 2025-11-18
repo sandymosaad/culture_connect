@@ -37,8 +37,20 @@
             </div>
             <div class="form-group col-6">
                 <label for="profile">Profile Image:</label>
-                <input type="file" id="profile" class="form-control"  name="profile" required accept="image/*"  />
-
+                <input type="file" id="profile" class="form-control"  name="profile"  accept="image/*"  required/>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="form-group col-6">
+                <label for="country">Country Name:</label>
+                <input type="text" name="country" id="country" value='{{ country or ''}}' class="form-control"  placeholder="Enter your country name" required>
+                {% if errors.country_error%}
+                    <p style='color: red'>{{errors.country_error}} </p>
+                {% endif  %} 
+            </div>
+            <div class="form-group col-6">
+                    <label for="flag">Country Flag:</label>
+                    <input type="file" name="flag" id="flag-img" class="form-control" accept="image/*"  required  >
             </div>
         </div>
 
