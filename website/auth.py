@@ -59,11 +59,6 @@ def sign_up():
         flag_file_input = request.files.get('flag')
         country_input = request.form.get('country')
 
-
-        
-        # response = valid_sign_up_data(username_input, email_input, password_input, country_input)
-        # if response:
-        #     return response
         errors = valid_sign_up_data(username_input, email_input, password_input, country_input)
 
         if errors:

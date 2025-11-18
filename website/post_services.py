@@ -3,19 +3,6 @@ import datetime
 import json
 
 # -----------------------------------------
-# Get all posts for a specific user
-# -----------------------------------------
-def get_user_posts(username):
-    """
-    Returns a list of posts created by the given username.
-    """
-    data = get_items("posts")   
-    all_posts = data["posts"]
-    user_posts = [post for post in all_posts if post["username"] == username]
-    return user_posts
-
-
-# -----------------------------------------
 # Prepare post data from input fields
 # -----------------------------------------
 def prepare_post_data(title, body, category, post_image_file=None):

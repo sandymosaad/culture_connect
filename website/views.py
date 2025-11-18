@@ -1,9 +1,10 @@
 # Import necessary packages from Flask
 from flask import Blueprint, render_template, session, flash, redirect, url_for, request
 from .shared import add_item, get_items, save_image
-from .models import Post
+from .models import Post 
 from .validators import valid_post_data
-from .post_services import get_user_posts, prepare_post_data, delete_post_by_id, edit_post_by_id, get_countries_name
+from .post_services import  prepare_post_data, delete_post_by_id, edit_post_by_id, get_countries_name
+
 # Define a Blueprint to organize routes
 views = Blueprint('views', __name__)
 
@@ -52,8 +53,6 @@ def profile():
                     user_country = u['user_country']
                     user_flag_country_img = u['user_flag_country_img']
                     
-                    
-            
             new_post = Post(
                 title=post_data['title'],
                 body=post_data['body'],
@@ -69,7 +68,8 @@ def profile():
             )
             add_item(new_post.to_dict(), 'posts')
             return redirect(url_for('views.profile'))
-    user_posts = get_user_posts(username)[::-1]
+    
+    user_posts = Post.get_user_posts(username)[::-1]
     return render_template('profile.html', custom_style="profile", username=username, posts=user_posts, errors=errors, show_modal=show_modal, form_data=request.form if errors else {}
     )
 

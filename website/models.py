@@ -1,3 +1,5 @@
+from .shared import  get_items
+
 # Define the Post class to store information for each post
 class Post:
     def __init__(self, title, body, category, date,  username, id, user_profile_img, user_country, user_flag_country_img, post_image=None):
@@ -27,6 +29,18 @@ class Post:
             'user_flag_country_img' : self.user_flag_country_img,
             "post_image": self.post_image,
         }
+
+
+    @classmethod
+    def get_user_posts(cls, username):
+        """
+        Return a list of Post objects for the given username.
+        """
+        data = get_items("posts")
+        all_posts = data["posts"]
+        user_posts = [post for post in all_posts if post["username"] == username]
+
+        return user_posts
 
 
 # Define the User class to store information for each user
