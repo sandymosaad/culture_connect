@@ -2,12 +2,13 @@ from flask import Blueprint, render_template, redirect, url_for, request , flash
 from .models import User
 from .shared import add_item, get_items, save_image
 from .validators import valid_sign_up_data
+from werkzeug.security import generate_password_hash, check_password_hash
 
 auth = Blueprint('auth', __name__)
 
 #######################
 # login 
-#######################
+####################### 
 
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
@@ -29,7 +30,8 @@ def login():
                 break
 
         if user_found:
-            if password == user_found['password']:
+            if check_password_hash(user_found['password'], password):
+            #if password == user_found['password']:
                 flash('Logged in successfully!', category='success')
                 session['username']= user_found['username']
                 return redirect(url_for('views.profile'  ))
@@ -91,10 +93,11 @@ def sign_up():
 
         # Create user object
         new_user = User(
-            id=None,
+            id=id,
             username=username_input,
             email=email_input,
-            password=password_input,
+            #password=password_input,
+            password=generate_password_hash(password_input, method='pbkdf2:sha256'),
             user_profile_img=new_name_profile,
             user_country=country_input,
             user_flag_country_img=new_name_flag

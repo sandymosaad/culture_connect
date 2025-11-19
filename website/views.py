@@ -67,6 +67,7 @@ def profile():
                 post_image=post_image_name,
                 
             )
+            print(user_id)
             add_item(new_post.to_dict(), 'posts')
             return redirect(url_for('views.profile'))
             
