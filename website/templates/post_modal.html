@@ -49,12 +49,12 @@
 
                     <div class="form-group">
                         {% if is_edit %}
-                        <img id="show-edit-post-img" src="" style="max-width: 100px;">
-                        <label for="{{ prefix }}post-img" id="edit-image-label"> Change image?</label>
+                        <img id="show-edit-post_image" src="" style="max-width: 100px;">
+                        <label for="{{ prefix }}post_image" id="edit-image-label"> Change image?</label>
                         {%else %}
-                        <label for="post-img">Your post have image?</label>
+                        <label for="post_image">Your post have image?</label>
                         {% endif %}
-                        <input type="file" name="post-img" id="{{ prefix }}post-img" class="form-control" accept="image/*">
+                        <input type="file" name="post_image" id="{{ prefix }}post_image" class="form-control" accept="image/*">
                     </div>
 
                     <div class="modal-footer flex justify-content-center">

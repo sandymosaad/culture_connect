@@ -40,7 +40,7 @@ def delete_post_by_id(id):
 # -----------------------------------------
 # Edit a post by its ID
 # -----------------------------------------
-def edit_post_by_id(id, form_data, files):
+def edit_post_by_id(id, form_data, files,username):
     """
     Edits a post's details (title, body, category) and optionally updates images.
     Returns a tuple (success: bool, error_message: str or None)
@@ -56,7 +56,8 @@ def edit_post_by_id(id, form_data, files):
 
                 # Update post image if provided
                 if "post_image" in files and files["post_image"].filename:
-                    post["post_image"] = save_image(files["post_image"], 'post_image', post['username'],id)
+                    img = files["post_image"]
+                    post["post_image"] = save_image(img, 'post_image', username,id)
 
         update_posts("posts", posts)
         return True, None

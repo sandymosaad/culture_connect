@@ -20,7 +20,7 @@ function showEditModal(currentPostId, currentTitle, currentBody, currentCategory
     document.getElementById('edit-title').value = currentTitle;
     document.getElementById('edit-body').value = currentBody;
     document.getElementById('edit-category').value = currentCategory;
-    let postImage=document.getElementById('show-edit-post-img');
+    let postImage=document.getElementById('show-edit-post_image');
     const uploadsPath = '/static/uploads/';
 
     let imageLabel = document.getElementById('edit-image-label');
@@ -41,7 +41,7 @@ function submitEdit(){
     let postTitle = document.getElementById('edit-title').value ;
     let postBody = document.getElementById('edit-body').value ;
     let category = document.getElementById('edit-category').value;
-    let postImage = document.getElementById('edit-post-img').files[0];
+    let postImage = document.getElementById('edit-post_image').files[0];
 
 
     const formData = new FormData();
@@ -64,7 +64,8 @@ function submitEdit(){
 function editPost(formData, postId){
     fetch(`/edit/${postId}`, {
         method: "POST" , 
-        body: formData
+        body: formData,
+        //console.log()
     })
     .then(res => res.json())
     .then(data => {

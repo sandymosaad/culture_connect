@@ -1,5 +1,5 @@
 {
-    "next_id": 20,
+    "next_id": 25,
     "posts": [
         {
             "title": "3333333333333333333",
@@ -62,6 +62,51 @@
             "id": 19,
             "user_id": 2,
             "post_image": null
+        },
+        {
+            "title": "hamwi test ssa",
+            "body": "test for Hamwi, the newspaper today is fine",
+            "category": "Tourist Attraction",
+            "date": "Nov 19, 2025",
+            "id": 20,
+            "user_id": null,
+            "post_image": "HMW_post_image_20.jpg"
+        },
+        {
+            "title": "Post test HMW",
+            "body": "HMW is writing a post now ...............",
+            "category": "Dish",
+            "date": "Nov 19, 2025",
+            "id": 21,
+            "user_id": null,
+            "post_image": "HMW_post_image_21.webp"
+        },
+        {
+            "title": "testtttttttttttt",
+            "body": "test body test body test body test body test body test body test body test body ",
+            "category": "Tourist Attraction",
+            "date": "Nov 19, 2025",
+            "id": 22,
+            "user_id": null,
+            "post_image": null
+        },
+        {
+            "title": "gddddddddd",
+            "body": "gddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "category": "Dish",
+            "date": "Nov 19, 2025",
+            "id": 23,
+            "user_id": null,
+            "post_image": null
+        },
+        {
+            "title": "vddddddddddd",
+            "body": "vddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "category": "Story",
+            "date": "Nov 19, 2025",
+            "id": 24,
+            "user_id": null,
+            "post_image": "HMW_post_image_24.webp"
         }
     ]
 }

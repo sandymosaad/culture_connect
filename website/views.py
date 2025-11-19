@@ -45,7 +45,7 @@ def profile():
             title=request.form.get('title'),
             body=request.form.get('body'),
             category=request.form.get('category'),
-            post_image_file=request.files.get('post-img')
+            post_image_file=request.files.get('post_image')
         )
         errors = valid_post_data(post_data['title'], post_data['body'])
 
@@ -98,9 +98,10 @@ def delete_post(id):
 
 @views.route("/edit/<int:id>", methods=["POST"])
 def edit_post(id):
+    username = session.get('username')
     form_data = request.form
     files = request.files
-    success, error = edit_post_by_id(id, form_data, files)
+    success, error = edit_post_by_id(id, form_data, files,username)
     if success:
         return {"success": True}
     return {"success": False, "error": error}, 500

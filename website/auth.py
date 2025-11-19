@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request , flash
 from .models import User
 from .shared import add_item, get_items, save_image
 from .validators import valid_sign_up_data
+
 auth = Blueprint('auth', __name__)
 
 #######################
@@ -10,8 +11,11 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
+    username = session.get('username')
+    if(username):
+        return redirect(url_for('views.profile'  ))
+    
     if request.method == 'POST':
-        username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
     
@@ -52,6 +56,10 @@ def logout():
 #######################
 @auth.route('/sign-up', methods=['POST', 'GET'])
 def sign_up():
+    username = session.get('username')
+    if(username):
+        return redirect(url_for('views.profile'  ))
+    
     if request.method == 'POST':
         username_input = request.form.get('username')
         email_input= request.form.get('email')

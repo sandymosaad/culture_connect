@@ -1,5 +1,5 @@
 {
-    "next_id": 5,
+    "next_id": 6,
     "users": [
         {
             "id": 1,
@@ -36,6 +36,15 @@
             "user_profile_img": "TEST_profile_4.webp",
             "user_country": "Egypt",
             "user_flag_country_img": "TEST_flag_4.webp"
+        },
+        {
+            "id": null,
+            "username": "HMW",
+            "email": "hamwi@test.com",
+            "password": "hamwi1234",
+            "user_profile_img": "HMW_profile_5.jpg",
+            "user_country": "Egypt",
+            "user_flag_country_img": "HMW_flag_5.jpg"
         }
     ]
 }
