@@ -245,3 +245,8 @@ body {
 .form-group input[type="file"] {
   padding: 6px;
 }
+
+/*------------------------------------------------------------*/
+.requiredIcon{
+    color: red;
+}

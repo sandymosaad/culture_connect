@@ -20,7 +20,7 @@
                     {% set prefix = 'edit-' if is_edit else '' %}
                     
                     <div class="form-group">
-                        <label for="{{ prefix }}title">Title of post</label>
+                        <label for="{{ prefix }}title"><span class='requiredIcon'>*</span> Title of post</label>
                         <input type="text" name="title" id="{{ prefix }}title"  value='{{ form_data.title or '' }}' class="form-control"  placeholder="Enter the title of post"  required>
                         {% if errors.title_error%}
                             <p style='color: red'>{{errors.title_error}} </p>
@@ -29,7 +29,7 @@
 
 
                     <div class="form-group">
-                        <label for="{{ prefix }}body">Body of post</label>
+                        <label for="{{ prefix }}body"><span class='requiredIcon'>*</span> Body of post</label>
                         <textarea name="body" id="{{ prefix }}body"  class="form-control" placeholder="Write something interesting..." required>{{ form_data.body or '' }}</textarea>
                         {% if errors.body_error%}
                                     <p style='color: red'>{{errors.body_error}} </p>
@@ -37,7 +37,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="{{ prefix }}category">Category</label>
+                        <label for="{{ prefix }}category"><span class='requiredIcon'>*</span> Category</label>
                         <select name="category" id="{{ prefix }}category" class="form-select" required>
                             {% if form_data.category %}
                                 <option value="{{ form_data.category }}" selected>{{ form_data.category }}</option>
