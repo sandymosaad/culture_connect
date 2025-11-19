@@ -62,5 +62,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script  src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% if custom_script %}
+        <script  src="{{ url_for('static', filename='js/' ~custom_script~'.js') }}"></script>        
+    {% endif %}
     </body>
 </html>

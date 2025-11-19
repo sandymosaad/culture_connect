@@ -1,32 +1,185 @@
 {
-    "next_id": 5,
+    "next_id": 22,
     "posts": [
         {
-            "title": "test",
-            "body": "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
-            "category": "Story",
+            "title": "Koshari",
+            "body": "Koshari is one of Egypt\\u2019s most iconic dishes \\u2014 a delicious mix of rice, pasta, lentils, chickpeas, and crispy fried onions, topped with a spicy tomato sauce and garlic vinegar.\\r\\n\\r\\nIt\\u2019s a meal that tells a story of Egypt\\u2019s culture \\u2014 simple, flavorful, and made for everyone. You can find Koshari everywhere, from small street carts to famous restaurants.",
+            "category": "Dish",
             "date": "Nov 19, 2025",
             "id": 1,
-            "user_id": null,
-            "post_image": "sandy_samir_post_image_1.webp"
+            "user_id": 1,
+            "post_image": "sandy_mosaad_post_image_1.webp"
         },
         {
-            "title": "mns",
-            "body": ",sncfnd lks lsnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+            "title": "The Grand Egyptian Museum",
+            "body": "The Grand Egyptian Museum, located near the Giza Pyramids, is set to become the largest archaeological museum in the world. It houses thousands of ancient artifacts, including the full collection of King Tutankhamun\\u2019s treasures.",
             "category": "Tourist Attraction",
             "date": "Nov 19, 2025",
             "id": 2,
-            "user_id": null,
-            "post_image": "sandy_samir_post_image_2.webp"
+            "user_id": 1,
+            "post_image": "sandy_mosaad_post_image_2.png"
         },
         {
-            "title": "sssssssssssssssssssssss",
-            "body": "ssssssssssssssssssssssssssssssssssssssssss",
-            "category": "Story",
+            "title": "Molokhia - A Taste of Egyptian Comfort",
+            "body": "Molokhia is one of Egypt\u2019s most loved traditional dishes. Made from finely chopped green leaves and flavored with garlic and coriander, it brings a warm homemade feeling with every bite. Whether served with rice or chicken, it\u2019s a simple dish that carries a rich cultural flavor.",
+            "category": "Dish",
             "date": "Nov 19, 2025",
-            "id": 4,
+            "id": 3,
+            "user_id": 1,
+            "post_image": "sandy_mosaad_post_image_3.jpeg"
+        },
+        {
+            "title": "Masoob",
+            "body": "Masoob is a traditional banana-based pudding from the Hadhramaut region in Yemen. It is made from over-ripe bananas, ground flat bread, cream, cheese, honey, and sometimes dates",
+            "category": "Dish",
+            "date": "Nov 19, 2025",
+            "id": 5,
+            "user_id": 2,
+            "post_image": "Abdullah_post_image_5.jpg"
+        },
+        {
+            "title": "Shibam Hadramawt - The Manhattan of the Desert",
+            "body": "Shibam Hadramawt is one of Yemen\u2019s most iconic landmarks, known for its ancient mud-brick skyscrapers that rise high above the desert. This historic city is over 500 years old and is often called \u201cthe Manhattan of the Desert.\u201d Its unique architecture and rich cultural heritage make it one of the most fascinating places in the Arab world",
+            "category": "Tourist Attraction",
+            "date": "Nov 19, 2025",
+            "id": 6,
+            "user_id": 2,
+            "post_image": "Abdullah_post_image_6.webp"
+        },
+        {
+            "title": "Krak des Chevaliers - A Timeless Syrian Fortress",
+            "body": "Krak des Chevaliers is one of the most famous medieval castles in the world. Located in western Syria, this well-preserved fortress stands as a symbol of history, strength, and ancient architecture. Its high towers, thick walls, and breathtaking views make it a must-see landmark for anyone exploring Syria\u2019s rich heritage",
+            "category": "Tourist Attraction",
+            "date": "Nov 19, 2025",
+            "id": 7,
+            "user_id": 3,
+            "post_image": "sedra_post_image_7.webp"
+        },
+        {
+            "title": "Kibbeh - Syria Beloved Traditional Dish",
+            "body": "Kibbeh is one of Syria\u2019s most iconic dishes, made from bulgur, minced meat, and aromatic spices. It comes in many forms\u2014fried, baked, or even served raw. Its rich flavor and crispy texture make it a favorite at family gatherings and celebrations across the country.",
+            "category": "Dish",
+            "date": "Nov 19, 2025",
+            "id": 8,
+            "user_id": 3,
+            "post_image": "sedra_post_image_8.jpeg"
+        },
+        {
+            "title": "salad with peanut butter",
+            "body": "salad with peanut butter is the most popular dish in Sudan which include some tomatoes, onions, onions' tale, it seams like it's plain salad, but when you add some peanut butter to it, you will love it",
+            "category": "Dish",
+            "date": "Nov 19, 2025",
+            "id": 9,
+            "user_id": 4,
+            "post_image": "Yousif_post_image_9.jpeg"
+        },
+        {
+            "title": "Jebel Barkal - The Sacred Mountain of Sudan",
+            "body": "Jebel Barkal is one of Sudan\u2019s most important historical landmarks. Located near Karima, this small mountain holds ancient temples, royal pyramids, and breathtaking Nubian heritage. Visitors come from around the world to explore its archaeological sites and enjoy the stunning views of the Nile from its peak.",
+            "category": "Tourist Attraction",
+            "date": "Nov 19, 2025",
+            "id": 10,
+            "user_id": 4,
+            "post_image": "Yousif_post_image_10.avif"
+        },
+        {
+            "title": "The Jambiya - A Symbol of Yemeni Heritage",
+            "body": "The Jambiya is one of the most iconic symbols of Yemeni culture. It\u2019s a traditional curved dagger worn by men during special occasions and cultural events. Beyond being a weapon, the Jambiya represents honor, identity, and pride. Its handcrafted designs and decorated handles reflect the deep artistry and heritage of Yemen",
+            "category": "Proverb",
+            "date": "Nov 19, 2025",
+            "id": 11,
+            "user_id": 5,
+            "post_image": null
+        },
+        {
+            "title": "Saltah -Yemen National Dish",
+            "body": "A Taste of Yemen Saltah is a traditional Yemeni stew, often considered the countrynational dish. It made with meat, vegetables, and fenugreek, served hot with a side of flatbread called malawah.",
+            "category": "Dish",
+            "date": "Nov 20, 2025",
+            "id": 12,
+            "user_id": 5,
+            "post_image": "Fatma_Amin_post_image_12.jpg"
+        },
+        {
+            "title": "Taste of Palestine - Musakhan",
+            "body": "Musakhan is a traditional Palestinian dish made of roasted chicken, caramelized onions, sumac, and pine nuts served on freshly baked flatbread. Its rich flavor and aroma are a true representation of Palestinian cuisine, often enjoyed during family gatherings and festive occasions.",
+            "category": "Dish",
+            "date": "Nov 20, 2025",
+            "id": 13,
+            "user_id": 6,
+            "post_image": "Rawan12_post_image_13.avif"
+        },
+        {
+            "title": "Discover Al-Aqsa Mosque",
+            "body": "Al-Aqsa Mosque, located in the heart of Jerusalem, is one of the holiest sites in Islam. With its stunning architecture and historical significance, it attracts visitors from around the world. The mosque\u2019s golden dome and peaceful courtyards reflect centuries of Palestinian heritage and spirituality.",
+            "category": "Tourist Attraction",
+            "date": "Nov 20, 2025",
+            "id": 14,
+            "user_id": 6,
+            "post_image": "Rawan12_post_image_14.jpeg"
+        },
+        {
+            "title": "Explore Bethlehem",
+            "body": "Bethlehem, the historic city in the West Bank, is famous as the birthplace of Jesus Christ. Visitors can explore the Church of the Nativity, wander through vibrant markets, and experience the rich Palestinian culture and traditions that make this city truly unique.",
+            "category": "Tourist Attraction",
+            "date": "Nov 20, 2025",
+            "id": 15,
+            "user_id": 6,
+            "post_image": "Rawan12_post_image_15.jpeg"
+        },
+        {
+            "title": "Discover the Matterhorn",
+            "body": "The Matterhorn, one of the most iconic peaks in the Swiss Alps, offers breathtaking views and thrilling adventures for climbers and hikers. It\u2019s a must-visit for nature lovers and photographers.",
+            "category": "Tourist Attraction",
+            "date": "Nov 20, 2025",
+            "id": 16,
             "user_id": 7,
-            "post_image": "soso_post_image_4.webp"
+            "post_image": "Christian_post_image_16.jpg"
+        },
+        {
+            "title": "Taste Swiss Fondue",
+            "body": "Swiss fondue is a delicious melted cheese dish, perfect for sharing. Traditionally made with Gruy\u00e8re and Emmental cheeses, it\u2019s a cozy culinary experience loved by locals and tourists alike.",
+            "category": "Dish",
+            "date": "Nov 20, 2025",
+            "id": 17,
+            "user_id": 7,
+            "post_image": "Christian_post_image_17.jpg"
+        },
+        {
+            "title": "Indulge in Swiss Chocolate",
+            "body": "Switzerland is famous for its high-quality chocolate. From artisanal truffles to creamy bars, chocolate lovers can explore chocolate factories and shops in almost every city.",
+            "category": "Dish",
+            "date": "Nov 20, 2025",
+            "id": 18,
+            "user_id": 7,
+            "post_image": "Christian_post_image_18.jpg"
+        },
+        {
+            "title": "Explore Chateau de Chillon",
+            "body": "Ch\u00e2teau de Chillon is a historic castle on the shores of Lake Geneva. Visitors can walk through medieval halls, towers, and enjoy scenic lake views",
+            "category": "Tourist Attraction",
+            "date": "Nov 20, 2025",
+            "id": 19,
+            "user_id": 7,
+            "post_image": "Christian_post_image_19.jpg"
+        },
+        {
+            "title": "Enjoy Swiss Rosti",
+            "body": "R\u00f6sti is a traditional Swiss potato dish, crispy on the outside and soft inside. It\u2019s a staple breakfast or side dish often served with cheese, eggs, or smoked meats.",
+            "category": "Dish",
+            "date": "Nov 20, 2025",
+            "id": 20,
+            "user_id": 7,
+            "post_image": "Christian_post_image_20.jpg"
+        },
+        {
+            "title": "Marvel at Ancient Wonders",
+            "body": "The Pyramids of Giza, located near Cairo, Egypt, are iconic ancient structures built as tombs for pharaohs. Visitors can explore the Great Pyramid, the Sphinx, and learn about Egypt's fascinating history.",
+            "category": "Tourist Attraction",
+            "date": "Nov 20, 2025",
+            "id": 21,
+            "user_id": 1,
+            "post_image": "sandy_mosaad_post_image_21.jpeg"
         }
     ]
 }

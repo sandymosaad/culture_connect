@@ -31,14 +31,13 @@ def login():
 
         if user_found:
             if check_password_hash(user_found['password'], password):
-            #if password == user_found['password']:
                 flash('Logged in successfully!', category='success')
                 session['username']= user_found['username']
                 return redirect(url_for('views.profile'  ))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
-            flash(f'User not found ', category='error')
+            flash(f'Incorrect email or user not found ', category='error')
 
     return render_template('login.html', custom_style='auth', has_diff_navbar_style=True)
 
@@ -71,7 +70,7 @@ def sign_up():
         country_input = request.form.get('country')
 
         errors = valid_sign_up_data(username_input, email_input, password_input, country_input)
-
+        
         if errors:
             return render_template("signup.html", custom_style='auth',
                                 username =username_input, email = email_input,
@@ -86,8 +85,8 @@ def sign_up():
         if email_input in users_data['emails']:
             flash('Email already exists', category='error')
             return render_template("signup.html", custom_style='auth', username= username_input, email=email_input,password=password_input, has_diff_navbar_style=True, errors={}) 
-        
         id = get_items("users")['next_id']   
+
         new_name_profile =save_image(profile_file_input, 'profile', username_input,id )
         new_name_flag =save_image(flag_file_input, 'flag', username_input,id)
 

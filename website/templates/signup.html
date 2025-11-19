@@ -46,11 +46,12 @@
         <div class='row'>
             <div class="form-group col-6">
                 <label for="profile">Profile Image:</label>
-                <input type="file" id="profile" class="form-control"  name="profile"  accept="image/*"  required/>
+                <input type="file" id="profile" class="form-control"  name="profile" value='{{ profile_img or ''}}' accept="image/*" required/> 
             </div>
             <div class="form-group col-6">
-                    <label for="flag">Country Flag:</label>
-                    <input type="file" name="flag" id="flag-img" class="form-control" accept="image/*"  required  >
+                <label for="flag">Country Flag:</label>
+                <input type="file" name="flag" id="flag-img" class="form-control" accept="image/*" required/>
+
             </div>
         </div>
 

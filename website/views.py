@@ -125,5 +125,5 @@ def global_posts():
     
     countries_name= get_countries_name(all_posts)
 
-    return render_template('global_posts.html', custom_style="global", posts=all_posts,  countries_name = countries_name,username=username)
+    return render_template('global_posts.html', custom_style="global", custom_script ="global", posts=all_posts,  countries_name = countries_name,username=username)
 

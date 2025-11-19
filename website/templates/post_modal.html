@@ -39,11 +39,18 @@
                     <div class="form-group">
                         <label for="{{ prefix }}category">Category</label>
                         <select name="category" id="{{ prefix }}category" class="form-select" required>
-                            <option value="" selected disabled>Select post category</option>
-                            <option value="Story">Story</option>
-                            <option value="Tourist Attraction">Tourist Attraction</option>
-                            <option value="Dish">Dish</option>
-                            <option value="proverb">Proverb</option>
+                            {% if form_data.category %}
+                                <option value="{{ form_data.category }}" selected>{{ form_data.category }}</option>
+                            {% else %}
+                                <option value="" selected disabled>Select post category</option>
+                            {% endif %}
+                            {% set categories = ["Story", "Tourist Attraction", "Dish", "Proverb"] %}
+
+                            {% for cat in categories %}
+                                {% if form_data.category != cat %}
+                                    <option value="{{ cat }}">{{ cat }}</option>
+                                {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
 
